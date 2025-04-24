@@ -1,7 +1,41 @@
-import './App.css';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import Home from './pages/home';
+import Login from './pages/login';
+import SignUP from './pages/signup';
+import MyPage from './pages/myPage';
+import MyStore from './pages/myStore';
+import Post from './pages/myStore/post';
+import CreatePost from './pages/myStore/post/create';
+import PostList from './pages/post/index';
+import PostId from './pages/postId';
+
+export function Layout() {
+  return (
+    <div>
+      <Outlet />
+    </div>
+  );
+}
 
 function App() {
-  return <div className="bg-kakao text-md-bold">인덱스 페이지</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUP />} />
+          <Route path="mypage" element={<MyPage />} />
+          <Route path="mystore" element={<MyStore />}>
+            <Route path="post" element={<Post />} />
+            <Route path="post/create" element={<CreatePost />} />
+          </Route>
+          <Route path="posts" element={<PostList />} />
+          <Route path="posts/:postId" element={<PostId />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
