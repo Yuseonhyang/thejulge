@@ -3,13 +3,13 @@ import clsx from 'clsx';
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'small' | 'medium' | 'large';
   variant: 'primary' | 'secondary-red' | 'secondary-blue' | 'disabled';
-  border: string;
 }
 
 export default function Button({ onClick, size, variant, disabled, ...rest }: Props) {
   return (
     <button
       className={clsx(
+        'rounded-md',
         {
           'text-xs-rg h-8 w-[82px]': size === 'small',
           'text-md-bold h-[37px] w-27': size === 'medium',
