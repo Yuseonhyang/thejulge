@@ -43,7 +43,7 @@ export default function InputField({
   return (
     <div className={clsx('flex w-full flex-col items-start', props.gapSize)}>
       {label && <label className="text-lg-rg text-black">{label}</label>}
-      <div className="flex flex-col gap-2">
+      <div className="flex w-full flex-col gap-2">
         {renderInputField()}
         {errorMessage && <p className="text-red40 text-xs-rg pl-2">{errorMessage}</p>}
       </div>

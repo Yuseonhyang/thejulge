@@ -3,16 +3,15 @@ import { commonTextInputStyle } from './ui/inputFiledStyle';
 
 interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-export default function TextArea({ onChange, placeholder, className, ...props }: Props) {
+export default function TextArea({ onChange, className, ...props }: Props) {
   return (
-    <div>
-      <textarea
-        name={props.name}
-        value={props.value}
-        onChange={onChange}
-        {...props}
-        className={clsx(commonTextInputStyle)}
-      />
-    </div>
+    <textarea
+      name={props.name}
+      value={props.value}
+      onChange={onChange}
+      placeholder={props.placeholder}
+      {...props}
+      className={clsx(commonTextInputStyle, 'min-h-[153px] rounded-[5px]', className)}
+    />
   );
 }
