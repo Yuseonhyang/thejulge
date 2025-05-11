@@ -6,8 +6,8 @@ import TextArea from './Textarea';
 interface Props {
   inputType: 'textarea' | 'image' | 'input';
   onChange: () => void;
-  placeholder: string;
 
+  placeholder?: string;
   label?: string;
   gapSize?: string;
   className?: string;
@@ -33,7 +33,7 @@ export default function InputField({
         return <TextArea className={className} {...props} />;
 
       case 'image':
-        return <ImageUploader className={className} />;
+        return <ImageUploader image="" className={className} />;
 
       default:
         return null;

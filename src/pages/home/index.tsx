@@ -11,7 +11,7 @@ export default function Home() {
         placeholder="플레이스 홀더"
         onChange={() => {}}
       />
-      <InputField label="라벨" inputType="image" placeholder="플레이스 홀더" onChange={() => {}} />
+      <InputField inputType="image" onChange={() => {}} />
     </div>
   );
 }
