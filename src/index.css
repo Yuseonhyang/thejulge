@@ -3,9 +3,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer {
+  html {
+    height: 100%;
+  }
   body {
     font-family:
       'Pretendard Variable',
+      Spoqa Han Sans Neo,
       Pretendard,
       -apple-system,
       BlinkMacSystemFont,
@@ -22,6 +26,8 @@
       sans-serif;
     color: var(--color-black);
     background-color: var(--color-white);
+    height: 100%;
+    font-size: var(--text-lg-rg);
   }
   button {
     cursor: pointer;

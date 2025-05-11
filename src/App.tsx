@@ -1,4 +1,4 @@
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import Login from './pages/login';
 import SignUP from './pages/signup';
@@ -8,14 +8,7 @@ import Post from './pages/myStore/post';
 import CreatePost from './pages/myStore/post/create';
 import PostList from './pages/post/index';
 import PostId from './pages/postId';
-
-export function Layout() {
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
-}
+import { Layout } from './components/common/Layout/Layout';
 
 function App() {
   return (
