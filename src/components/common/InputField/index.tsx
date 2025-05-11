@@ -14,6 +14,7 @@ interface Props {
 
   validate?: () => void;
   errorMessage?: string;
+  image?: string;
 }
 
 export default function InputField({
@@ -22,6 +23,7 @@ export default function InputField({
   errorMessage,
   className = '',
   validate,
+  image = '',
   ...props
 }: Props) {
   const renderInputField = () => {
@@ -33,7 +35,7 @@ export default function InputField({
         return <TextArea className={className} {...props} />;
 
       case 'image':
-        return <ImageUploader image="" className={className} />;
+        return <ImageUploader onChange={props.onChange} image={image} className={className} />;
 
       default:
         return null;
