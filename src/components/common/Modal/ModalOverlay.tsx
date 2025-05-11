@@ -4,6 +4,7 @@ import { ReactNode, useEffect } from 'react';
 interface Props {
   children: ReactNode;
   className?: string;
+  onClick: () => void;
 }
 export default function ModalOverlay({ children, className, ...props }: Props) {
   useEffect(() => {
