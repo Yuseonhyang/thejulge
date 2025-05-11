@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { commonTextInputStyle } from './ui/inputFiledStyle';
+import { commonTextInputStyle } from './style/inputFiledStyle';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 

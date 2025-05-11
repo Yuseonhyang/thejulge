@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import { useState } from 'react';
+import ImageUploaderIcon from '../../../assets/ImageUploaderIcon';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className: string;
   image: string | null;
   onChange: () => void;
 }
-//@todo : 카메라 이미지 svgr하기
 
 export default function ImageUploader({ className, image, onChange, ...props }: Props) {
   const [currentImage, setCurrentImage] = useState<string | null>(image);
@@ -57,13 +57,13 @@ export default function ImageUploader({ className, image, onChange, ...props }: 
             htmlFor={inputId}
             className="absolute top-[calc(50%-15px)] left-[calc(50%-54px)] flex h-15 w-27 flex-col items-center justify-center gap-[11px]"
           >
-            <img src="src/public/icons/camera.svg" className="size-8" />
+            <ImageUploaderIcon className="text-white" />
             <p className="text-lg-bold text-white">이미지 변경하기</p>
           </label>
         </div>
       ) : (
         <label htmlFor={inputId} className="flex flex-col items-center justify-center gap-[11px]">
-          <img src="src/public/icons/camera.svg" className="size-8" />
+          <ImageUploaderIcon className="text-gray40" />
           <p className="text-lg-bold text-gray40">이미지 추가하기</p>
         </label>
       )}
