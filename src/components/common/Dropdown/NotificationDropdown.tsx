@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import Dropdown from '.';
-import { defaultOptionsStyle, defaultOptionStyle } from './style';
+import { defaultOptionsStyle } from './style';
 import NotificationIcon from '../../../assets/icons/NotificationIcon';
+import Notification from './Notification';
 
 //@todo notifications 타입 수정
 //hasNewNotification 의 처리 수정
@@ -40,14 +41,14 @@ export default function NotificationDropdown({
             ) : (
               <>
                 {notifications.map((notification, idx) => (
-                  <li
+                  <div
                     key={notification + idx}
                     onClick={() => {
                       handleSelectOption(notification);
                     }}
                   >
-                    {notification}
-                  </li>
+                    <Notification notification={notification} />
+                  </div>
                 ))}
               </>
             )}
