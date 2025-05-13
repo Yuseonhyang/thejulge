@@ -10,7 +10,7 @@ interface Props {
 
   currentOption?: string;
   triggerWidth?: string;
-  optionsWidth?: string;
+  containerWidth?: string;
   statement?: string;
   optionStyle?: string;
 }
@@ -40,7 +40,10 @@ export default function SelectDropdown({
         }
       >
         {({ close }) => (
-          <ul className={clsx(defaultOptionsStyle, statement, `w-[${props.optionsWidth}px]`)}>
+          <ul
+            className={clsx(defaultOptionsStyle, statement)}
+            style={{ width: `${props.containerWidth}px` }}
+          >
             {options.map((option, idx) => (
               <li
                 key={option + idx}
