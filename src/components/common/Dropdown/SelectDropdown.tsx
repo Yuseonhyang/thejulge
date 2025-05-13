@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Dropdown from '.';
-import { defaultOptionsStyle, defaultOptionStyle } from './style';
+import { defaultContainerStyle, defaultOptionStyle } from './style';
 import { useState } from 'react';
 import SelectDropdownIcon from '../../../assets/icons/SelectDropdownIcon';
 
@@ -41,7 +41,7 @@ export default function SelectDropdown({
       >
         {({ close }) => (
           <ul
-            className={clsx(defaultOptionsStyle, statement)}
+            className={clsx(defaultContainerStyle, statement, 'bg-white')}
             style={{ width: `${props.containerWidth}px` }}
           >
             {options.map((option, idx) => (

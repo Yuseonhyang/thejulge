@@ -7,16 +7,17 @@ interface Props {
 /**
  * @todo
  * notification 타입 수정
+ * 안에 컨텐츠 내용 수정
  */
 export default function Notification({ notification }: Props) {
   const time = '1분전';
   const status = 'pending';
 
   return (
-    <div className="flex h-[105px] w-full flex-col gap-1 px-3 py-4">
+    <div className="border-gray20 flex h-[105px] w-full flex-col gap-1 rounded-[5px] border-1 bg-white px-3 py-4">
       <StatusColorChip status={status} />
-      <div>{notification}</div>
-      <p>{time}</p>
+      <div className="text-sm-rg">{notification}</div>
+      <p className="text-xs-rg text-gray40">{time}</p>
     </div>
   );
 }

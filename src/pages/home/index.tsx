@@ -11,11 +11,7 @@ export default function Home() {
         onSelect={() => {}}
         triggerWidth="500"
       />
-      <NotificationDropdown
-        notifications={options}
-        hasNewNotification={true}
-        onMarkAsRead={() => {}}
-      />
+      <NotificationDropdown notifications={[]} hasNewNotification={true} onMarkAsRead={() => {}} />
     </div>
   );
 }
