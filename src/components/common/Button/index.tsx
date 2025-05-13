@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  size: 'small' | 'medium' | 'large';
+  size: 'small' | 'medium' | 'large' | 'fullWidth';
   variant: 'primary' | 'secondary-red' | 'secondary-blue' | 'disabled';
 }
 
@@ -13,7 +13,8 @@ export default function Button({ onClick, size, variant, disabled, ...rest }: Pr
         {
           'text-xs-rg h-8 w-[82px]': size === 'small',
           'text-md-bold h-[37px] w-27': size === 'medium',
-          'text-lg-bold h-12 w-full': size === 'large',
+          'text-md-bold h-12 w-30': size === 'large',
+          'text-lg-bold h-12 w-full': size === 'fullWidth',
         },
         {
           'bg-primary text-white': variant === 'primary',
