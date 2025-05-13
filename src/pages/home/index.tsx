@@ -1,11 +1,8 @@
-import Dropdown from '../../components/common/Dropdown';
+import SelectDropdown from '../../components/common/Dropdown/SelectDropdown';
 
 export default function Home() {
+  const options = ['테스트', '테스트2', '테스트3'];
   return (
-    <div>
-      <Dropdown trigger={<div>이거</div>}>
-        {({ close }) => <div className="w-full">열렸나</div>}
-      </Dropdown>
-    </div>
+    <SelectDropdown optionsWidth="300" options={options} onSelect={() => {}} triggerWidth="500" />
   );
 }
