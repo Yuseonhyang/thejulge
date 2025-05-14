@@ -31,6 +31,7 @@ export function Header() {
             notifications={['']}
             hasNewNotification={false}
             onMarkAsRead={() => {}}
+            statement="right-0"
           />
         </div>
       </div>
