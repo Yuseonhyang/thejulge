@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import InputField from '../../InputField';
+import NotificationDropdown from '../../Dropdown/NotificationDropdown';
 
 export function Header() {
   //받아오는 데이터에 따라 텍스트가 내가게 or 내 프로필
@@ -20,7 +21,11 @@ export function Header() {
         <div className="text-lg-bold flex items-center gap-4 md:gap-3 lg:gap-10">
           <Link to={'/'}>텍스트</Link>
           <p>로그아웃</p>
-          <div>알림 드롭다운</div>
+          <NotificationDropdown
+            notifications={['']}
+            hasNewNotification={false}
+            onMarkAsRead={() => {}}
+          />
         </div>
       </div>
       <div className="block h-10 w-full md:hidden">
