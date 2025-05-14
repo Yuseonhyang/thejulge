@@ -2,15 +2,18 @@ import { clsx } from 'clsx';
 import ImageUploader from './ImageUploader';
 import Input from './Input';
 import TextArea from './Textarea';
+import SearchInput from './SearchInput';
+import { ReactNode } from 'react';
 
 interface Props {
-  inputType: 'textarea' | 'image' | 'input';
+  inputType: 'textarea' | 'image' | 'input' | 'search';
   onChange: () => void;
 
   placeholder?: string;
   label?: string;
   gapSize?: string;
   className?: string;
+  leftSlot?: ReactNode;
 
   validate?: () => void;
   errorMessage?: string;
@@ -36,6 +39,9 @@ export default function InputField({
 
       case 'image':
         return <ImageUploader onChange={props.onChange} image={image} className={className} />;
+
+      case 'search':
+        return <SearchInput className={className} {...props} />;
 
       default:
         return null;
