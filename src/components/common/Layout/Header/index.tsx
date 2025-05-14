@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import InputField from '../../InputField';
 import NotificationDropdown from '../../Dropdown/NotificationDropdown';
+import { PLACEHOLDERS } from '../../../../constants/placeholders';
 
 export function Header() {
   //받아오는 데이터에 따라 텍스트가 내가게 or 내 프로필
@@ -15,7 +16,12 @@ export function Header() {
             className="h-3.75 w-20.5 lg:h-5 lg:w-27.25"
           />
           <div className="hidden h-10 w-86 md:block">
-            <InputField inputType="input" onChange={() => {}} />
+            <InputField
+              inputType="search"
+              onChange={() => {}}
+              leftSlot={<img src="src/public/icons/search-icon.svg" />}
+              placeholder={PLACEHOLDERS.search}
+            />
           </div>
         </div>
         <div className="text-lg-bold flex items-center gap-4 md:gap-3 lg:gap-10">
@@ -29,7 +35,12 @@ export function Header() {
         </div>
       </div>
       <div className="block h-10 w-full md:hidden">
-        <InputField inputType="input" onChange={() => {}} />
+        <InputField
+          inputType="search"
+          onChange={() => {}}
+          leftSlot={<img src="src/public/icons/search-icon.svg" />}
+          placeholder={PLACEHOLDERS.search}
+        />
       </div>
     </div>
   );
