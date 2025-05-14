@@ -1,18 +1,10 @@
-import Modal from '../../components/common/Modal';
-import ModalPortal from '../../components/common/Modal/core/ModalPortal';
-import useModalContext from '../../components/common/Modal/core/useModalContext';
+// import useModalContext from '../../components/common/Modal/core/useModalContext';
+// import Modal from '../../components/common/Modal';
+// import ModalPortal from '../../components/common/Modal/core/ModalPortal';
 
 export default function Home() {
-  const { openModal } = useModalContext();
-  return (
-    <div className="w-full">
-      <div className="w-full bg-black">difdfjak</div>
-      <div onClick={() => openModal('test')}>id로 열림 버튼</div>
-      <ModalPortal modalId="test">
-        <Modal modalId="test">
-          <div>컨텐츠</div>
-        </Modal>
-      </ModalPortal>
-    </div>
-  );
+  // const options = ['테스트', '테스트2', '테스트3'];
+  // const { openModal } = useModalContext();
+
+  return <div className="w-full"></div>;
 }
