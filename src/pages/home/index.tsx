@@ -6,5 +6,5 @@ export default function Home() {
   // const options = ['테스트', '테스트2', '테스트3'];
   // const { openModal } = useModalContext();
 
-  return <div className="w-full"></div>;
+  return <div></div>;
 }
