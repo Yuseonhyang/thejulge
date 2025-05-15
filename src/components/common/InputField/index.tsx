@@ -49,7 +49,10 @@ export default function InputField({
   };
 
   return (
-    <div className={clsx('flex h-full w-full flex-col items-start', props.gapSize)}>
+    <div
+      className={clsx('flex h-full w-full flex-col items-start')}
+      style={{ gap: `${props.gapSize}px` }}
+    >
       {label && <label className="text-lg-rg text-black">{label}</label>}
       <div className="flex h-full w-full flex-col gap-2">
         {renderInputField()}
