@@ -9,7 +9,7 @@ export default function Input({ onChange, value, type = 'text', className, ...pr
       placeholder={props.placeholder}
       onChange={onChange}
       {...props}
-      className={clsx('h-[58px] rounded-md', commonTextInputStyle, className)}
+      className={clsx('h-full w-full rounded-md', commonTextInputStyle, className)}
     />
   );
 }
