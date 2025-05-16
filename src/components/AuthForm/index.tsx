@@ -27,9 +27,11 @@ export default function AuthForm({ type }: Props) {
           onChange={() => {}}
           placeholder={PLACEHOLDERS.default}
         />
-        <Button variant="primary" size="fullWidth">
-          {AUTH_BUTTON.login}
-        </Button>
+        <div className="h-12 w-full">
+          <Button variant="primary" size="parent-dependent">
+            {AUTH_BUTTON.login}
+          </Button>
+        </div>
       </form>
       <p>
         {footerText}
