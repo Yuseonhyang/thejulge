@@ -1,5 +1,5 @@
 export interface SelectedFilterType {
   districts: string[];
-  startsAtGte: string;
+  startsAtGte: Date;
   hourlyPayGte: number;
 }
