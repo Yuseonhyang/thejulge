@@ -1,15 +1,21 @@
 import clsx from 'clsx';
 import { commonTextInputStyle } from './style/inputFiledStyle';
+import { ReactNode } from 'react';
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+  rightSlot?: ReactNode;
+}
 
-export default function Input({ onChange, value, type = 'text', className, ...props }: Props) {
+export default function Input({ onChange, className, rightSlot, ...props }: Props) {
   return (
-    <input
-      placeholder={props.placeholder}
-      onChange={onChange}
-      {...props}
-      className={clsx('h-[58px] rounded-md', commonTextInputStyle, className)}
-    />
+    <div className="flex items-center gap-2 rounded-[10px] px-2 py-2.5 md:gap-2.5 md:px-2.5">
+      <input
+        placeholder={props.placeholder}
+        onChange={onChange}
+        {...props}
+        className={clsx('h-[58px] rounded-md', commonTextInputStyle, className)}
+      />
+      {rightSlot && <>{rightSlot}</>}
+    </div>
   );
 }
