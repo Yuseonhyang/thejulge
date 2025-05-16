@@ -3,13 +3,13 @@ import Home from './pages/home';
 import Login from './pages/login';
 import SignUP from './pages/signup';
 import MyPage from './pages/myPage';
-import MyStore from './pages/myStore';
-import Post from './pages/myStore/post';
-import CreatePost from './pages/myStore/post/create';
 import PostList from './pages/post/index';
 import PostId from './pages/postId';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
+import StoreRegisterPage from './pages/myStore/Store/StoreRegisterPage';
+import MyStorePage from './pages/myStore';
+import StoreEditPage from './pages/myStore/Store/StoreEditPage';
 
 function App() {
   return (
@@ -23,9 +23,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="mypage" element={<MyPage />} />
-          <Route path="mystore" element={<MyStore />}>
-            <Route path="post" element={<Post />} />
-            <Route path="post/create" element={<CreatePost />} />
+          <Route path="mystore" element={<MyStorePage />}>
+            <Route path="store/register" element={<StoreRegisterPage />} />
+            <Route path="store/edit" element={<StoreEditPage />} />
           </Route>
           <Route path="posts" element={<PostList />} />
           <Route path="posts/:postId" element={<PostId />} />
