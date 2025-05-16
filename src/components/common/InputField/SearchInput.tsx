@@ -13,7 +13,7 @@ export default function SearchInput({ onChange, className, leftSlot, ...props }:
         placeholder={props.placeholder}
         onChange={onChange}
         {...props}
-        className={clsx('w-full border-none py-2.5', className)}
+        className={clsx('w-full border-none', className)}
       />
     </div>
   );

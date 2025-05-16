@@ -8,16 +8,20 @@ import Post from './pages/myStore/post';
 import CreatePost from './pages/myStore/post/create';
 import PostList from './pages/post/index';
 import PostId from './pages/postId';
-import { Layout } from './components/common/Layout/Layout';
+import { AuthLayout } from './components/common/Layout/AuthLayout';
+import { Layout } from './components/common/Layout';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+        <Route path="/" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUP />} />
+        </Route>
+
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="mypage" element={<MyPage />} />
           <Route path="mystore" element={<MyStore />}>
             <Route path="post" element={<Post />} />
