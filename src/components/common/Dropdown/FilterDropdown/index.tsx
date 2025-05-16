@@ -9,6 +9,7 @@ import XIcon from '../../../../assets/icons/XIcon';
 import DistrictsTags from './DistrictsTags';
 import { SEOUL_DISTRICTS } from './value/seoul-districts-data';
 import { SelectedFilterType } from './types';
+import { INITIAL_FILTER } from './value/initial-value';
 
 interface Props {
   placement?: string;
@@ -16,10 +17,10 @@ interface Props {
   onSelectFilter: (filter: SelectedFilterType) => void;
   selectedFilter: SelectedFilterType;
 }
+
 /**
  * @todo
  * 1. button 스타일 바꾸기
- * 2. onSelectFilter 수정
  */
 
 export default function FilterDropdown({
@@ -29,16 +30,20 @@ export default function FilterDropdown({
   ...props
 }: Props) {
   const [filterCount, setFilterCount] = useState(0);
-  const [selectedDistricts, setSelectedDistricts] = useState<string[]>([]);
   const [filter, setFilter] = useState<SelectedFilterType>(selectedFilter);
+  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(filter.districts);
 
   const onSelectFilterUpdate = () => {
     onSelectFilter(filter);
     setFilterCount((prev) => ++prev);
   };
 
-  const filterUpdate = (key: string, value: string) => {
+  const filterUpdate = (key: string, value: any) => {
     setFilter((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const resetFilter = () => {
+    setFilter(INITIAL_FILTER);
   };
 
   return (
@@ -46,7 +51,7 @@ export default function FilterDropdown({
       trigger={
         <div className="h-[30px] w-fit">
           <Button size="fill" variant="primary" className="px-3 py-1.5">
-            `${ButtonText.filter} (${filterCount})`
+            {`${ButtonText.filter} (${filterCount})`}
           </Button>
         </div>
       }
@@ -93,10 +98,11 @@ export default function FilterDropdown({
                 label="시작일"
                 placeholder="입력"
                 gapSize="12"
-                // value={}
-                // name='startDate'
-                onChange={() => {
-                  filterUpdate('startsAtGte', 'value');
+                value={String(filter.startsAtGte)}
+                type="date"
+                name="startsAtGte"
+                onChange={(e) => {
+                  filterUpdate('startsAtGte', e.currentTarget.value);
                 }}
               />
             </section>
@@ -109,8 +115,13 @@ export default function FilterDropdown({
                     inputType="input"
                     placeholder="입력"
                     gapSize="12"
-                    onChange={() => {
-                      filterUpdate('hourlyPayGte', 'value');
+                    value={filter.hourlyPayGte}
+                    type="number"
+                    step="100"
+                    min="0"
+                    name="hourlyPayGte"
+                    onChange={(e) => {
+                      filterUpdate('hourlyPayGte', e.currentTarget.value);
                     }}
                   />
                 </div>
@@ -118,7 +129,7 @@ export default function FilterDropdown({
               </div>
             </section>
             <section className="flex w-full items-center gap-2">
-              <Button size="small" variant="secondary-red">
+              <Button size="small" variant="secondary-red" onClick={resetFilter}>
                 {ButtonText.reset}
               </Button>
               <Button size="medium" variant="primary" onClick={onSelectFilterUpdate}>
