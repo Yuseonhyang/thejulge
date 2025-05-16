@@ -14,10 +14,12 @@ interface Props {
   gapSize?: string;
   className?: string;
   leftSlot?: ReactNode;
+  rightSlot?: ReactNode;
 
   validate?: () => void;
   errorMessage?: string;
   image?: string;
+  value?: string | readonly string[] | number | undefined;
 }
 
 export default function InputField({
