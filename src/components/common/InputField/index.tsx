@@ -3,23 +3,20 @@ import ImageUploader from './ImageUploader';
 import Input from './Input';
 import TextArea from './Textarea';
 import SearchInput from './SearchInput';
-import { ReactNode } from 'react';
+import { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   inputType: 'textarea' | 'image' | 'input' | 'search';
-  onChange: () => void;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
-  placeholder?: string;
   label?: string;
   gapSize?: string;
-  className?: string;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
 
   validate?: () => void;
   errorMessage?: string;
   image?: string;
-  value?: string | readonly string[] | number | undefined;
 }
 
 export default function InputField({

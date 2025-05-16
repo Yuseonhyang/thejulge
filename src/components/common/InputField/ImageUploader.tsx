@@ -5,7 +5,6 @@ import ImageUploaderIcon from '../../../assets/ImageUploaderIcon';
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className: string;
   image: string | null;
-  onChange: () => void;
 }
 
 export default function ImageUploader({ className, image, onChange, ...props }: Props) {
@@ -27,7 +26,6 @@ export default function ImageUploader({ className, image, onChange, ...props }: 
     try {
       const formattedImage = await getBase64(file);
       setCurrentImage(formattedImage);
-      onChange();
     } catch (error) {
       console.error('이미지 변환 실패:', error);
       setCurrentImage(null);
