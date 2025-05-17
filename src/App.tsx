@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
-import Login from './pages/login';
 import SignUP from './pages/signup';
 import MyPage from './pages/myPage';
 import MyStore from './pages/myStore';
@@ -10,13 +9,14 @@ import PostList from './pages/post/index';
 import PostId from './pages/postId';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
+import LoginPage from './pages/login';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AuthLayout />}>
-          <Route path="login" element={<Login />} />
+          <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUP />} />
         </Route>
 
