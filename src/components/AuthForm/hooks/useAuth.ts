@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { LoginFormData } from '../types/auth';
 import { INITIAL_LOGIN_VALUE } from '../initial-value';
+import axiosClient from '../../../lib/instance';
 
 export default function useAuth() {
   const [formData, setFormData] = useState<LoginFormData>(INITIAL_LOGIN_VALUE);
@@ -11,7 +12,11 @@ export default function useAuth() {
   ) => {
     const value = e.currentTarget.value;
     setFormData((prev) => ({ ...prev, [key]: value }));
+    console.log(formData);
   };
 
-  return { handleChangeAuthForm };
+  const loginUser = async () => {
+    const { data } = await axiosClient.post(`/token`, { ...formData });
+  };
+  return { handleChangeAuthForm, loginUser };
 }

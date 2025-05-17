@@ -13,11 +13,19 @@ export default function AuthForm({ type }: Props) {
   const href = type === 'login' ? '/signup' : '/login';
   const hrefText = type === 'login' ? '회원가입하기' : '로그인하기';
 
-  const { handleChangeAuthForm } = useAuth();
+  const { handleChangeAuthForm, loginUser } = useAuth();
 
   return (
     <section className="flex w-full flex-col items-center gap-5">
-      <form className="flex w-full flex-col gap-7">
+      <form
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          {
+            e.preventDefault();
+            loginUser();
+          }
+        }}
+        className="flex w-full flex-col gap-7"
+      >
         <InputField
           label="이메일"
           inputType="input"
@@ -30,12 +38,12 @@ export default function AuthForm({ type }: Props) {
           label="비밀번호"
           inputType="input"
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-            handleChangeAuthForm('email', e)
+            handleChangeAuthForm('password', e)
           }
           placeholder={PLACEHOLDERS.default}
         />
         <div className="h-12 w-full">
-          <Button variant="primary" size="parent-dependent">
+          <Button variant="primary" size="parent-dependent" type="submit">
             {AUTH_BUTTON.login}
           </Button>
         </div>
