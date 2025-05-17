@@ -2,6 +2,7 @@ import InputField from '../../components/common/InputField';
 import { AUTH_BUTTON } from '../../constants/button';
 import { PLACEHOLDERS } from '../../constants/placeholders';
 import Button from '../common/Button';
+import useAuth from './hooks/useAuth';
 
 interface Props {
   type: 'login' | 'signup';
@@ -12,19 +13,25 @@ export default function AuthForm({ type }: Props) {
   const href = type === 'login' ? '/signup' : '/login';
   const hrefText = type === 'login' ? '회원가입하기' : '로그인하기';
 
+  const { handleChangeAuthForm } = useAuth();
+
   return (
     <section className="flex w-full flex-col items-center gap-5">
       <form className="flex w-full flex-col gap-7">
         <InputField
           label="이메일"
           inputType="input"
-          onChange={() => {}}
+          onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+            handleChangeAuthForm('email', e)
+          }
           placeholder={PLACEHOLDERS.default}
         />
         <InputField
           label="비밀번호"
           inputType="input"
-          onChange={() => {}}
+          onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+            handleChangeAuthForm('email', e)
+          }
           placeholder={PLACEHOLDERS.default}
         />
         <div className="h-12 w-full">
