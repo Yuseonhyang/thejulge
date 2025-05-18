@@ -1,3 +1,4 @@
+import UserTypeCheckIcon from '../../assets/icons/UserTypeCheckIcon';
 import InputField from '../../components/common/InputField';
 import { AUTH_BUTTON } from '../../constants/button';
 import { PLACEHOLDERS } from '../../constants/placeholders';
@@ -42,6 +43,7 @@ export default function AuthForm({ type }: Props) {
           }
           placeholder={PLACEHOLDERS.default}
         />
+        {type === 'signup' && <SignupUserTypeField />}
         <div className="h-12 w-full">
           <Button variant="primary" size="parent-dependent" type="submit">
             {AUTH_BUTTON[type]}
@@ -55,5 +57,31 @@ export default function AuthForm({ type }: Props) {
         </a>
       </p>
     </section>
+  );
+}
+
+function SignupUserTypeField() {
+  return (
+    <div className="flex flex-col gap-2">
+      <label>회원 유형</label>
+      <div className="flex gap-4">
+        <div className="h-[50px] w-[167px]">
+          <Button variant="secondary-red" size="parent-dependent" type="button">
+            <div className="flex items-center justify-between">
+              <UserTypeCheckIcon isChecked={true} onClick={() => {}} />
+              알바님
+            </div>
+          </Button>
+        </div>
+        <div className="h-[50px] w-[167px]">
+          <Button variant="secondary-red" size="parent-dependent" type="button">
+            <div className="flex items-center justify-between">
+              <UserTypeCheckIcon isChecked={false} onClick={() => {}} />
+              사장님
+            </div>
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
