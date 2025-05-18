@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
-import SignUP from './pages/signup';
 import MyPage from './pages/myPage';
 import MyStore from './pages/myStore';
 import Post from './pages/myStore/post';
@@ -10,6 +9,7 @@ import PostId from './pages/postId';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
 import LoginPage from './pages/login';
+import SignupPage from './pages/signup';
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<AuthLayout />}>
           <Route path="login" element={<LoginPage />} />
-          <Route path="signup" element={<SignUP />} />
+          <Route path="signup" element={<SignupPage />} />
         </Route>
 
         <Route path="/" element={<Layout />}>

@@ -1,8 +1,11 @@
+import clsx from 'clsx';
+import UserTypeCheckIcon from '../../assets/icons/UserTypeCheckIcon';
 import InputField from '../../components/common/InputField';
 import { AUTH_BUTTON } from '../../constants/button';
 import { PLACEHOLDERS } from '../../constants/placeholders';
 import Button from '../common/Button';
 import useAuth from './hooks/useAuth';
+import { useState } from 'react';
 
 interface Props {
   type: 'login' | 'signup';
@@ -13,7 +16,7 @@ export default function AuthForm({ type }: Props) {
   const href = type === 'login' ? '/signup' : '/login';
   const hrefText = type === 'login' ? '회원가입하기' : '로그인하기';
 
-  const { handleChangeAuthForm, loginUser } = useAuth();
+  const { handleChangeAuthForm, loginUser } = useAuth(type);
 
   return (
     <section className="flex w-full flex-col items-center gap-5">
@@ -42,9 +45,16 @@ export default function AuthForm({ type }: Props) {
           }
           placeholder={PLACEHOLDERS.default}
         />
+        {type === 'signup' && <SignupUserTypeField />}
         <div className="h-12 w-full">
-          <Button variant="primary" size="parent-dependent" type="submit">
-            {AUTH_BUTTON.login}
+          <Button
+            variant="primary"
+            type="submit"
+            name="action"
+            value="submit"
+            size="parent-dependent"
+          >
+            {AUTH_BUTTON[type]}
           </Button>
         </div>
       </form>
@@ -55,5 +65,53 @@ export default function AuthForm({ type }: Props) {
         </a>
       </p>
     </section>
+  );
+}
+
+function SignupUserTypeField() {
+  const [userType, setUserType] = useState('employee');
+
+  const changeUserType = (value: string) => {
+    setUserType(value);
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      <label>회원 유형</label>
+      <div className="flex gap-4">
+        <div
+          className={clsx(
+            'flex h-[50px] w-[167px] items-center justify-center rounded-[30px] border-1',
+            userType === 'employee' ? 'border-primary' : 'border-gray30'
+          )}
+        >
+          <Button
+            type="button"
+            value="employee"
+            onClick={(e) => changeUserType(e.currentTarget.value)}
+            className="text-md-rg flex gap-2"
+          >
+            <UserTypeCheckIcon isChecked={userType === 'employee'} />
+            알바님
+          </Button>
+        </div>
+        <div
+          className={clsx(
+            'flex h-[50px] w-[167px] items-center justify-center rounded-[30px] border-1',
+            userType === 'employer' ? 'border-primary' : 'border-gray30'
+          )}
+        >
+          <Button
+            type="button"
+            value="employer"
+            onClick={(e) => changeUserType(e.currentTarget.value)}
+            className="text-md-rg flex gap-2"
+          >
+            <UserTypeCheckIcon isChecked={userType === 'employer'} />
+            사장님
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
