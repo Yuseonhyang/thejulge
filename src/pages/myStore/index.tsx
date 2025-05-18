@@ -1,4 +1,4 @@
-import NoStore from './components/my-store-page/NoStore';
+import NoStore from './components/NoStore';
 
 export default function MyStorePage() {
   //내가게 정보 조회 후에 nostore 처리
