@@ -1,4 +1,5 @@
 import MyStore from './_myStorePage/components/MyStore';
+import RecruitCard from './_myStorePage/components/RecruitCard';
 import { INITIAL_STORE } from './_myStorePage/value/initiail-value';
 
 export default function MyStorePage() {
@@ -7,7 +8,7 @@ export default function MyStorePage() {
   return (
     <div>
       <h1 className="text-3xl-bold">내 가게</h1>
-      <MyStore store={INITIAL_STORE} />
+      <RecruitCard />
     </div>
   );
 }
