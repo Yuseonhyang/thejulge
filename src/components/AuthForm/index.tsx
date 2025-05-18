@@ -33,7 +33,7 @@ export default function AuthForm({ type }: Props) {
           label="이메일"
           inputType="input"
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-            handleChangeAuthForm('email', e)
+            handleChangeAuthForm('email', e.target.value)
           }
           placeholder={PLACEHOLDERS.default}
         />
@@ -41,7 +41,7 @@ export default function AuthForm({ type }: Props) {
           label="비밀번호"
           inputType="input"
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-            handleChangeAuthForm('password', e)
+            handleChangeAuthForm('password', e.target.value)
           }
           placeholder={PLACEHOLDERS.default}
         />
@@ -70,9 +70,11 @@ export default function AuthForm({ type }: Props) {
 
 function SignupUserTypeField() {
   const [userType, setUserType] = useState('employee');
+  const { handleChangeAuthForm } = useAuth('signup');
 
   const changeUserType = (value: string) => {
     setUserType(value);
+    handleChangeAuthForm('type', value);
   };
 
   return (

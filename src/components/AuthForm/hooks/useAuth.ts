@@ -7,17 +7,12 @@ import { useNavigate } from 'react-router-dom';
 type useAuthType = 'login' | 'signup';
 
 export default function useAuth(type: useAuthType) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<LoginFormData | SignupFormData>(
     type === 'login' ? INITIAL_LOGIN_VALUE : INITIAL_SIGNUP_VALUE
   );
 
-  const navigate = useNavigate();
-
-  const handleChangeAuthForm = (
-    key: string,
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const value = e.currentTarget.value;
+  const handleChangeAuthForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
   };
 
