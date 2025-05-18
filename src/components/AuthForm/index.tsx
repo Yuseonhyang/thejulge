@@ -16,7 +16,7 @@ export default function AuthForm({ type }: Props) {
   const href = type === 'login' ? '/signup' : '/login';
   const hrefText = type === 'login' ? '회원가입하기' : '로그인하기';
 
-  const { handleChangeAuthForm, loginUser } = useAuth(type);
+  const { handleChangeAuthForm, loginUser, signupUser } = useAuth(type);
 
   return (
     <section className="flex w-full flex-col items-center gap-5">
@@ -24,7 +24,7 @@ export default function AuthForm({ type }: Props) {
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           {
             e.preventDefault();
-            loginUser();
+            type === 'login' ? loginUser() : signupUser();
           }
         }}
         className="flex w-full flex-col gap-7"

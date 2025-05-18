@@ -14,12 +14,14 @@ export default function useAuth(type: useAuthType) {
 
   const handleChangeAuthForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
-    console.log(formData);
   };
 
   const loginUser = async () => {
     try {
-      const { data } = await axiosClient.post(`/token`, { ...formData });
+      const { data } = await axiosClient.post(`/token`, {
+        email: formData.email,
+        password: formData.password,
+      });
       localStorage.setItem('accessToken', data.item.token);
 
       if (data.item.user.item.type === 'employee') return navigate(`/mypage`);
@@ -30,5 +32,27 @@ export default function useAuth(type: useAuthType) {
     }
   };
 
-  return { handleChangeAuthForm, loginUser };
+  const signupUser = async () => {
+    try {
+      if ('type' in formData) {
+        const res = await axiosClient.post(`/users`, {
+          email: formData.email,
+          password: formData.password,
+          type: formData.type,
+        });
+
+        if (res.status === 201) {
+          loginUser();
+        }
+        if (res.status === 409) {
+          //이미 사용중인 이메일
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      //todo에러 핸들링
+    }
+  };
+
+  return { handleChangeAuthForm, loginUser, signupUser };
 }
