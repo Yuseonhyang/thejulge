@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
+import Button from '../../../components/common/Button';
 
-export default function NoStore() {
+export default function MyStore() {
   const navigate = useNavigate();
 
   return (
@@ -9,7 +9,7 @@ export default function NoStore() {
       <p className="text-md-rg md:text-lg-rg">내 가게를 소개하고 공고도 등록해 보세요.</p>
       <div className="w-27 md:w-86.5">
         <Button
-          size="fullWidth"
+          size="parent-dependent"
           variant="primary"
           onClick={() => navigate('/mystore/store/register')}
         >
