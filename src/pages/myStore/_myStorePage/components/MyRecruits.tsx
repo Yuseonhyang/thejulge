@@ -1,22 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
-import { STORE_BUTTON } from '../../../../constants/button';
+import RecruitCard from './RecruitCard';
 
 export default function MyRecruits() {
-  const navigate = useNavigate();
-
   return (
-    <div className="border-gray20 flex w-full flex-col items-center justify-center gap-6 rounded-xl border-1 py-15">
-      <p className="text-md-rg md:text-lg-rg">공고를 등록해 보세요.</p>
-      <div className="h-12 w-27 md:w-86.5">
-        <Button
-          size="parent-dependent"
-          variant="primary"
-          onClick={() => navigate('/mystore/store/register')}
-        >
-          {STORE_BUTTON.noRecruit}
-        </Button>
-      </div>
+    <div className="grid h-full w-full grid-cols-2 gap-6 rounded-xl lg:grid-cols-3">
+      <RecruitCard />
+      <RecruitCard />
+      <RecruitCard />
+      <RecruitCard />
+      <RecruitCard />
     </div>
   );
 }

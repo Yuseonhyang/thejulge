@@ -7,7 +7,7 @@ export function Header() {
   //받아오는 데이터에 따라 텍스트가 내가게 or 내 프로필
 
   return (
-    <div className="fixed top-0 left-0 flex w-full flex-col items-center justify-center gap-4 bg-white px-5 py-2.5 md:px-8 md:py-[15px]">
+    <div className="fixed top-0 left-0 flex h-[102px] w-full flex-col items-center justify-center gap-4 bg-white px-5 py-2.5 md:h-[70px] md:px-8 md:py-[15px]">
       <div className="flex h-full w-full max-w-255 items-center justify-between">
         <div className="flex items-center gap-8.75 lg:gap-10">
           <img
