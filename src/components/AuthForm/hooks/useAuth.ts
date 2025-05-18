@@ -3,6 +3,7 @@ import { LoginFormData, SignupFormData } from '../types/auth';
 import { INITIAL_LOGIN_VALUE, INITIAL_SIGNUP_VALUE } from '../initial-value';
 import axiosClient from '../../../lib/instance';
 import { useNavigate } from 'react-router-dom';
+import { PATHS } from '../../../constants/path';
 
 type useAuthType = 'login' | 'signup';
 
@@ -24,8 +25,8 @@ export default function useAuth(type: useAuthType) {
       });
       localStorage.setItem('accessToken', data.item.token);
 
-      if (data.item.user.item.type === 'employee') return navigate(`/mypage`);
-      if (data.item.user.item.type === 'employer') return navigate(`/mystore`);
+      if (data.item.user.item.type === 'employee') return navigate(PATHS.MYPAGE);
+      if (data.item.user.item.type === 'employer') return navigate(PATHS.MYSTORE);
     } catch (err) {
       console.error(err);
       //todo에러 핸들링
