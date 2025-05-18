@@ -1,20 +1,12 @@
 interface Props {
   isChecked: boolean;
-  onClick: () => void;
 }
 
-export default function UserTypeCheckIcon({ isChecked, onClick }: Props) {
+export default function UserTypeCheckIcon({ isChecked }: Props) {
   const stroke = isChecked ? 'none' : '#CBC9CF';
   const fill = isChecked ? '#EA3C12' : 'none';
   return (
-    <svg
-      onClick={onClick}
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="10" cy="10" r="9.5" stroke={stroke} fill={fill} />
 
       {isChecked && (
