@@ -45,7 +45,19 @@ export default function AuthForm({ type }: Props) {
           }
           placeholder={PLACEHOLDERS.default}
         />
-        {type === 'signup' && <SignupUserTypeField />}
+        {type === 'signup' && (
+          <>
+            <InputField
+              label="비밀번호 확인"
+              inputType="input"
+              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                handleChangeAuthForm('confirmPassword', e.target.value)
+              }
+              placeholder={PLACEHOLDERS.default}
+            />
+            <SignupUserTypeField onChange={(value) => handleChangeAuthForm('type', value)} />
+          </>
+        )}
         <div className="h-12 w-full">
           <Button
             variant="primary"
@@ -68,13 +80,12 @@ export default function AuthForm({ type }: Props) {
   );
 }
 
-function SignupUserTypeField() {
+function SignupUserTypeField({ onChange }: { onChange: (value: string) => void }) {
   const [userType, setUserType] = useState('employee');
-  const { handleChangeAuthForm } = useAuth('signup');
 
   const changeUserType = (value: string) => {
     setUserType(value);
-    handleChangeAuthForm('type', value);
+    onChange(value);
   };
 
   return (
@@ -90,7 +101,7 @@ function SignupUserTypeField() {
           <Button
             type="button"
             value="employee"
-            onClick={(e) => changeUserType(e.currentTarget.value)}
+            onClick={() => changeUserType('employee')}
             className="text-md-rg flex gap-2"
           >
             <UserTypeCheckIcon isChecked={userType === 'employee'} />
@@ -106,7 +117,7 @@ function SignupUserTypeField() {
           <Button
             type="button"
             value="employer"
-            onClick={(e) => changeUserType(e.currentTarget.value)}
+            onClick={() => changeUserType('employer')}
             className="text-md-rg flex gap-2"
           >
             <UserTypeCheckIcon isChecked={userType === 'employer'} />

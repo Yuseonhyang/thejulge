@@ -14,6 +14,7 @@ export default function useAuth(type: useAuthType) {
 
   const handleChangeAuthForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
+    console.log(formData);
   };
 
   const loginUser = async () => {
