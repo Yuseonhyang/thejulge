@@ -13,7 +13,7 @@ export default function AuthForm({ type }: Props) {
   const href = type === 'login' ? '/signup' : '/login';
   const hrefText = type === 'login' ? '회원가입하기' : '로그인하기';
 
-  const { handleChangeAuthForm, loginUser } = useAuth();
+  const { handleChangeAuthForm, loginUser } = useAuth(type);
 
   return (
     <section className="flex w-full flex-col items-center gap-5">
@@ -44,7 +44,7 @@ export default function AuthForm({ type }: Props) {
         />
         <div className="h-12 w-full">
           <Button variant="primary" size="parent-dependent" type="submit">
-            {AUTH_BUTTON.login}
+            {AUTH_BUTTON[type]}
           </Button>
         </div>
       </form>
