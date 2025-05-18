@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 
 interface Props {
   inputType: 'textarea' | 'image' | 'input' | 'search';
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
   placeholder?: string;
   label?: string;
@@ -40,7 +40,7 @@ export default function InputField({
         return <TextArea className={className} {...props} />;
 
       case 'image':
-        return <ImageUploader onChange={props.onChange} image={image} className={className} />;
+        return <ImageUploader image={image} className={className} />;
 
       case 'search':
         return <SearchInput className={className} {...props} />;
