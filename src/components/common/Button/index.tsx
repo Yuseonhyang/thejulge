@@ -19,9 +19,9 @@ export default function Button({ onClick, size, variant, ...props }: Props) {
         },
         {
           'text-xs-rg h-8 w-[82px]': size === 'small',
-          'text-md-bold h-[37px] w-27': size === 'medium',
-          'text-md-bold h-12 w-30': size === 'large',
-          'text-md-bold h-full w-full': size === 'parent-dependent',
+          'h-[37px] w-27': size === 'medium',
+          'h-12 w-30': size === 'large',
+          'h-full w-full': size === 'parent-dependent',
         },
         props.className
       )}
