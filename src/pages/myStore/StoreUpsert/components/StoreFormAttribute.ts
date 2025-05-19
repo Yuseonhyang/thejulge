@@ -1,6 +1,8 @@
+import { SEOUL_DISTRICTS } from '../../../../components/common/Dropdown/FilterDropdown/value/seoul-districts-data';
+
 export const STORE_FORM_DROPDOWN = {
   category: { label: '분류', options: ['한식', '양식', '중식', '분식'] },
-  address1: { label: '주소', options: [] },
+  address1: { label: '주소', options: SEOUL_DISTRICTS },
 };
 
 export const STORE_FORM_INPUT = {
