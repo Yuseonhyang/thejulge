@@ -4,6 +4,7 @@ import { INITIAL_STORE } from './_myStorePage/value/initiail-value';
 import { getUserInfo } from '../../hooks/use-Tanstack-query';
 import NoStore from './_myStorePage/components/NoStore';
 import NoRecruit from './_myStorePage/components/NoRecruit';
+import { Outlet } from 'react-router-dom';
 
 export default function MyStorePage() {
   const data = getUserInfo();
@@ -19,6 +20,7 @@ export default function MyStorePage() {
         <h1 className="text-3xl-bold">내 공고</h1>
         {!shop ? <NoRecruit /> : <MyRecruits />}
       </section>
+      <Outlet />
     </div>
   );
 }

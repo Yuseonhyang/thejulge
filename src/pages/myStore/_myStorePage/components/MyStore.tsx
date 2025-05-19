@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../types/store';
 import Button from '../../../../components/common/Button';
+import { PATHS } from '../../../../constants/path';
 
 export default function MyStore({ store }: Store) {
   const { image, storeName, type, address, description } = store;
@@ -21,7 +22,11 @@ export default function MyStore({ store }: Store) {
           <p className="text-md-rg md:text-lg-rg">{description}</p>
         </div>
         <div className="flex h-9.5 gap-2 md:h-12">
-          <Button variant="secondary-red" size="parent-dependent" onClick={() => navigate('/')}>
+          <Button
+            variant="secondary-red"
+            size="parent-dependent"
+            onClick={() => navigate(PATHS.STORE_EDIT)}
+          >
             편집하기
           </Button>
           <Button variant="primary" size="parent-dependent" onClick={() => navigate('/')}>
