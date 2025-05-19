@@ -8,7 +8,7 @@ import MyStorePage from './pages/myStore';
 import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import StoreUpsertPage from './pages/myStore/StoreUpsert';
+import StoreUpsertPage from './pages/myStore/storeUpsert';
 
 const queryClient = new QueryClient();
 
