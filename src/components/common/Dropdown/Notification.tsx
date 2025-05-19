@@ -14,7 +14,7 @@ export default function Notification({ notification }: Props) {
   const status = 'pending';
 
   return (
-    <div className="border-gray20 flex h-[105px] w-full flex-col gap-1 rounded-[5px] border-1 bg-white px-3 py-4">
+    <div className="border-gray20 flex h-[105px] w-full min-w-82 flex-col gap-1 rounded-[5px] border-1 bg-white px-3 py-4">
       <StatusColorChip status={status} />
       <div className="text-sm-rg">{notification}</div>
       <p className="text-xs-rg text-gray40">{time}</p>

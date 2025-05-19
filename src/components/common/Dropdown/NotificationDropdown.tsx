@@ -15,13 +15,13 @@ interface Props {
   hasNewNotification: boolean;
 
   containerWidth?: string;
-  statement?: string;
+  placement?: string;
 }
 
 export default function NotificationDropdown({
   notifications = [],
   hasNewNotification,
-  statement = 'right-0 left-0',
+  placement = 'right-0 left-0',
   containerWidth = '368',
   ...props
 }: Props) {
@@ -35,7 +35,7 @@ export default function NotificationDropdown({
         <div
           className={clsx(
             defaultContainerStyle,
-            statement,
+            placement,
             'bg-red10 flex max-h-[419px] min-h-50 flex-col gap-4 px-5 py-6'
           )}
           style={{ width: `${containerWidth}px` }}

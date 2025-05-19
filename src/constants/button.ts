@@ -9,3 +9,13 @@ export const STORE_BUTTON = {
   createStore: '등록하기',
   editStore: '완료하기',
 };
+
+export const FILTER_BUTTON = {
+  filter: '상세 필터',
+  reset: '초기화',
+  apply: '적용하기',
+};
+export const MYPAGE_BUTTON = {
+  noProfile: '내 프로필 등록하기',
+  noApply: '공고 보러가기',
+};
