@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import MyPage from './pages/myPage';
-import PostList from './pages/post/index';
 import PostId from './pages/postId';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
@@ -26,9 +25,8 @@ function App() {
           <Route path="mystore" element={<MyStorePage />}>
             <Route path="store/register" element={<StoreRegisterPage />} />
             <Route path="store/edit" element={<StoreEditPage />} />
+            <Route path="posts/:postId" element={<PostId />} />
           </Route>
-          <Route path="posts" element={<PostList />} />
-          <Route path="posts/:postId" element={<PostId />} />
         </Route>
       </Routes>
     </BrowserRouter>
