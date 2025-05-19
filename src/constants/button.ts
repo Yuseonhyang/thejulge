@@ -13,3 +13,7 @@ export const FILTER_BUTTON = {
   reset: '초기화',
   apply: '적용하기',
 };
+export const MYPAGE_BUTTON = {
+  noProfile: '내 프로필 등록하기',
+  noApply: '공고 보러가기',
+};
