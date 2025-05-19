@@ -8,7 +8,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ onChange, className, rightSlot, ...props }: Props) {
   return (
-    <div className="flex items-center gap-2 rounded-[10px] px-2 py-2.5 md:gap-2.5 md:px-2.5">
+    <div className="flex items-center gap-2 rounded-[10px] py-2.5 md:gap-2.5">
       <input
         placeholder={props.placeholder}
         onChange={onChange}

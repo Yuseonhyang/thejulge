@@ -3,11 +3,11 @@ import ImageUploader from './ImageUploader';
 import Input from './Input';
 import TextArea from './Textarea';
 import SearchInput from './SearchInput';
-import { ChangeEvent, InputHTMLAttributes, ReactNode } from 'react';
+import { InputHTMLAttributes, ReactNode } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   inputType: 'textarea' | 'image' | 'input' | 'search';
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
   label?: string;
   gapSize?: string;
@@ -37,7 +37,7 @@ export default function InputField({
         return <TextArea className={className} {...props} />;
 
       case 'image':
-        return <ImageUploader onChange={props.onChange} image={image} className={className} />;
+        return <ImageUploader image={image} className={className} />;
 
       case 'search':
         return <SearchInput className={className} {...props} />;
