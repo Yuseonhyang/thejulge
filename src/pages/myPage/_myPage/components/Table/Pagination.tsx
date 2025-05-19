@@ -1,31 +1,23 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 import PaginationArrow from '../../../../../assets/icons/PaginationArrow';
+import usePagination from '../../hooks/usePagination';
 
 export default function Pagination({}) {
   const totalPage = 21;
-  const pagesArray = Array.from({ length: totalPage }, (_, i) => i + 1);
-
-  const [visiblePages, setVisiblePages] = useState(
-    pagesArray.length > 7 ? [1, 2, 3, 4, 5, 6, 7] : pagesArray
-  );
-  const [selectedNumber, setSelectedNumber] = useState(1);
-
-  const changePage = (page: number) => {
-    // if (selectedNumber === visiblePages[-1]) {
-    //   setVisiblePages((prev) => [...prev, page]);
-    // }
-    // if (selectedNumber === visiblePages[0]) {
-    //   setVisiblePages((prev) => [...prev, page]);
-    // }
-    setSelectedNumber(page);
-  };
+  const { visiblePages, selectedNumber, changePage, clickNavigationButton } =
+    usePagination(totalPage);
 
   return (
     <div className="flex items-center gap-5">
-      {pagesArray.length > 5 && (
-        <button>
-          <PaginationArrow type="prev" navAvailability={false} />
+      {totalPage > 7 && (
+        <button
+          value="prev"
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+            clickNavigationButton(e.currentTarget.value)
+          }
+          disabled={selectedNumber === 1}
+        >
+          <PaginationArrow type="prev" navAvailability={selectedNumber !== 1} />
         </button>
       )}
       <div className="flex">
@@ -39,9 +31,15 @@ export default function Pagination({}) {
           );
         })}
       </div>
-      {pagesArray.length > 5 && (
-        <button>
-          <PaginationArrow type="next" navAvailability={true} />
+      {totalPage > 7 && (
+        <button
+          value="next"
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+            clickNavigationButton(e.currentTarget.value)
+          }
+          disabled={selectedNumber === totalPage}
+        >
+          <PaginationArrow type="next" navAvailability={selectedNumber !== totalPage} />
         </button>
       )}
     </div>
