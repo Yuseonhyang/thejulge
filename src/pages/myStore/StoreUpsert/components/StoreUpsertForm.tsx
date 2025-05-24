@@ -15,21 +15,11 @@ export default function StoreUpsertForm({ mode }: Props) {
       <InputField {...STORE_FORM_INPUT.name} inputType="input" onChange={() => {}} />
       <div className="w-full">
         <label>{STORE_FORM_DROPDOWN.category.label}</label>
-        <SelectDropdown
-          triggerWidth="100%"
-          containerWidth="100%"
-          options={STORE_FORM_DROPDOWN.category.options}
-          onSelect={() => {}}
-        />
+        <SelectDropdown options={STORE_FORM_DROPDOWN.category.options} onSelect={() => {}} />
       </div>
       <div className="w-full">
         <label>{STORE_FORM_DROPDOWN.address1.label}</label>
-        <SelectDropdown
-          triggerWidth="100%"
-          containerWidth="100%"
-          options={STORE_FORM_DROPDOWN.address1.options}
-          onSelect={() => {}}
-        />
+        <SelectDropdown options={STORE_FORM_DROPDOWN.address1.options} onSelect={() => {}} />
       </div>
       <InputField {...STORE_FORM_INPUT.address2} inputType="input" onChange={() => {}} />
       <InputField
