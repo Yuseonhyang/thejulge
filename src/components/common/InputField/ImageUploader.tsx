@@ -3,7 +3,7 @@ import { useState } from 'react';
 import ImageUploaderIcon from '../../../assets/ImageUploaderIcon';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  className: string;
+  className?: string;
   image: string | null;
 }
 

@@ -6,6 +6,8 @@ export const AUTH_BUTTON = {
 export const STORE_BUTTON = {
   noRecruit: '가게 등록하기',
   noStore: '공고 등록하기',
+  createStore: '등록하기',
+  editStore: '완료하기',
 };
 
 export const FILTER_BUTTON = {
