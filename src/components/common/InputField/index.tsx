@@ -3,6 +3,7 @@ import ImageUploader from './ImageUploader';
 import Input from './Input';
 import TextArea from './Textarea';
 import SearchInput from './SearchInput';
+import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { InputHTMLAttributes, ReactNode } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
@@ -24,6 +25,7 @@ export default function InputField({
   inputType,
   errorMessage,
   className = '',
+  placeholder = PLACEHOLDERS.default,
   validate,
   image = '',
   ...props
@@ -31,10 +33,10 @@ export default function InputField({
   const renderInputField = () => {
     switch (inputType) {
       case 'input':
-        return <Input className={className} {...props} />;
+        return <Input placeholder={placeholder} className={className} {...props} />;
 
       case 'textarea':
-        return <TextArea className={className} {...props} />;
+        return <TextArea placeholder={placeholder} className={className} {...props} />;
 
       case 'image':
         return <ImageUploader image={image} className={className} />;

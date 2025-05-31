@@ -11,7 +11,7 @@ export function Header() {
       <div className="flex h-full w-full max-w-255 items-center justify-between">
         <div className="flex items-center gap-8.75 lg:gap-10">
           <img
-            src="src/public/images/logo.png"
+            src="/src/public/images/logo.png"
             alt="thejulge 로고"
             className="h-3.75 w-20.5 lg:h-5 lg:w-27.25"
           />

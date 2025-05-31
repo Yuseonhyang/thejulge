@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Dropdown from '..';
 import { defaultContainerStyle } from '../style';
 import Button from '../../Button';
-import { ButtonText } from '../../../../constants/button';
+import { FILTER_BUTTON } from '../../../../constants/button';
 import { useState } from 'react';
 import InputField from '../../InputField';
 import XIcon from '../../../../assets/icons/XIcon';
@@ -50,8 +50,8 @@ export default function FilterDropdown({
     <Dropdown
       trigger={
         <div className="h-[30px] w-fit">
-          <Button size="fill" variant="primary" className="px-3 py-1.5">
-            {`${ButtonText.filter} (${filterCount})`}
+          <Button size="parent-dependent" variant="primary" className="px-3 py-1.5">
+            {`${FILTER_BUTTON.filter} (${filterCount})`}
           </Button>
         </div>
       }
@@ -66,7 +66,7 @@ export default function FilterDropdown({
           style={{ width: `${containerWidth}px` }}
         >
           <div className="flex w-full justify-between">
-            <h2 className="text-xl-bold">{ButtonText.filter}</h2>
+            <h2 className="text-xl-bold">{FILTER_BUTTON.filter}</h2>
             <XIcon width="24" height="24" className="bg-black" />
           </div>
           <div className="flex flex-col gap-6">
@@ -130,10 +130,10 @@ export default function FilterDropdown({
             </section>
             <section className="flex w-full items-center gap-2">
               <Button size="small" variant="secondary-red" onClick={resetFilter}>
-                {ButtonText.reset}
+                {FILTER_BUTTON.reset}
               </Button>
               <Button size="medium" variant="primary" onClick={onSelectFilterUpdate}>
-                {ButtonText.apply}
+                {FILTER_BUTTON.apply}
               </Button>
             </section>
             <div />
