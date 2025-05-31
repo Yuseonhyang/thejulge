@@ -32,7 +32,7 @@ export default function DistrictSection({ filter, filterUpdate }: Props) {
           );
         })}
       </div>
-      {selectedDistricts.length > 1 && (
+      {selectedDistricts.length > 0 && (
         <DistrictsTags selectedDistricts={selectedDistricts} onDeleteTag={deleteDistrictTag} />
       )}
     </section>
