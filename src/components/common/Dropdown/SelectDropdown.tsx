@@ -9,16 +9,15 @@ interface Props {
   onSelect: (option: string) => void;
 
   currentOption?: string;
-  triggerWidth?: string;
   containerWidth?: string;
-  statement?: string;
+  placement?: string;
   optionStyle?: string;
 }
 
 export default function SelectDropdown({
   options,
   onSelect,
-  statement = 'right-0 left-0',
+  placement = 'right-0 top-[calc(100%+8px)]',
   ...props
 }: Props) {
   const [selectedOption, setSelectedOption] = useState(props.currentOption || null);
@@ -31,46 +30,41 @@ export default function SelectDropdown({
   };
 
   return (
-    <div>
-      <Dropdown
-        trigger={
-          <div className={`w-[${props.triggerWidth}px]`} onClick={() => setIsOpen((prev) => !prev)}>
-            <Trigger selectedOption={selectedOption} isOpen={isOpen} />
-          </div>
-        }
-      >
-        {({ close }) => (
-          <ul
-            className={clsx(defaultContainerStyle, statement, 'bg-white')}
-            style={{ width: `${props.containerWidth}px` }}
-          >
-            {options.map((option, idx) => (
-              <li
-                key={option + idx}
-                onClick={() => {
-                  handleSelectOption(option);
-                  close();
-                }}
-                className={clsx(
-                  defaultOptionStyle,
-                  idx !== 0 && 'border-gray20 border-t',
-                  'text-md-rg',
-                  props.optionStyle
-                )}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
-        )}
-      </Dropdown>
-    </div>
+    <Dropdown
+      trigger={
+        <div className="w-full" onClick={() => setIsOpen((prev) => !prev)}>
+          <Trigger selectedOption={selectedOption} isOpen={isOpen} />
+        </div>
+      }
+    >
+      {({ close }) => (
+        <ul className={clsx(defaultContainerStyle, placement, 'w-full bg-white')}>
+          {options.map((option, idx) => (
+            <li
+              key={option + idx}
+              onClick={() => {
+                handleSelectOption(option);
+                close();
+              }}
+              className={clsx(
+                defaultOptionStyle,
+                idx !== 0 && 'border-gray20 border-t',
+                'text-md-rg',
+                props.optionStyle
+              )}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+      )}
+    </Dropdown>
   );
 }
 
 function Trigger({ ...props }: { selectedOption: string | null; isOpen: boolean }) {
   return (
-    <div className="flex w-full items-center justify-between px-5 py-4">
+    <div className="border-gray30 flex w-full items-center justify-between rounded-md border-1 px-5 py-4">
       <p
         className={clsx(
           'w-full text-left',
