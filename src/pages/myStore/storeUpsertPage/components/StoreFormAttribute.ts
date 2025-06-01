@@ -6,16 +6,16 @@ export const STORE_FORM_DROPDOWN = {
 };
 
 export const STORE_FORM_INPUT = {
-  name: { label: '가게 이름', name: 'name', required: true, gapSize: 'gap-2' },
+  name: { label: '가게 이름', name: 'name', required: true, gapSize: '8' },
 
-  address2: { label: '상세 주소', name: 'address2', required: true, gapSize: 'gap-2' },
+  address2: { label: '상세 주소', name: 'address2', required: true, gapSize: '8' },
   originalHourlyPay: {
     label: '기본 시급',
 
     name: 'originalHourlyPay',
     required: true,
-    gapSize: 'gap-2',
+    gapSize: '8',
   },
-  description: { label: '가게 설명', name: 'description', required: false, gapSize: 'gap-2' },
-  imageUrl: { label: '가게 이미지', name: 'imageUrl', required: false, gapSize: 'gap-2' },
+  description: { label: '가게 설명', name: 'description', required: false, gapSize: '8' },
+  imageUrl: { label: '가게 이미지', name: 'imageUrl', required: false, gapSize: '8' },
 };

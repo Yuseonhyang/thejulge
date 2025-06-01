@@ -7,7 +7,7 @@ import createImageURL from '../../../api/api';
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   image: string | null;
-  selectImage: (value: string) => void;
+  selectImage?: (value: string) => void;
 }
 
 export default function ImageUploader({ className, image, selectImage, ...props }: Props) {
@@ -22,7 +22,7 @@ export default function ImageUploader({ className, image, selectImage, ...props 
       const imageUrl = await createImageURL(e.target.value);
 
       setCurrentImage(formattedImage);
-      selectImage(imageUrl);
+      selectImage?.(imageUrl);
     } catch (error) {
       console.error('이미지 변환 실패:', error);
       setCurrentImage(null);

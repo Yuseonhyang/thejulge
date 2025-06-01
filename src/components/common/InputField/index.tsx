@@ -8,13 +8,14 @@ import { InputHTMLAttributes, ReactNode } from 'react';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   inputType: 'textarea' | 'image' | 'input' | 'search';
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
   label?: string;
   gapSize?: string;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
 
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  selectImage?: (value: string) => void;
   validate?: () => void;
   errorMessage?: string;
   image?: string;
@@ -24,7 +25,6 @@ export default function InputField({
   label,
   inputType,
   errorMessage,
-  className = '',
   placeholder = PLACEHOLDERS.default,
   validate,
   image = '',
@@ -33,16 +33,22 @@ export default function InputField({
   const renderInputField = () => {
     switch (inputType) {
       case 'input':
-        return <Input placeholder={placeholder} className={className} {...props} />;
+        return <Input placeholder={placeholder} {...props} />;
 
       case 'textarea':
-        return <TextArea placeholder={placeholder} className={className} {...props} />;
+        return <TextArea placeholder={placeholder} {...props} />;
 
       case 'image':
-        return <ImageUploader image={image} className={className} />;
+        return (
+          <ImageUploader
+            image={image}
+            className={props.className}
+            selectImage={props.selectImage}
+          />
+        );
 
       case 'search':
-        return <SearchInput className={className} {...props} />;
+        return <SearchInput {...props} />;
 
       default:
         return null;

@@ -1,7 +1,6 @@
 import Button from '../../../../components/common/Button';
 import SelectDropdown from '../../../../components/common/Dropdown/SelectDropdown';
 import InputField from '../../../../components/common/InputField';
-import ImageUploader from '../../../../components/common/InputField/ImageUploader';
 import { STORE_BUTTON } from '../../../../constants/button';
 import useStoreUpsertForm from '../hooks/useStoreUpsertForm';
 import { STORE_FORM_DROPDOWN, STORE_FORM_INPUT } from './StoreFormAttribute';
@@ -26,7 +25,7 @@ export default function StoreUpsertForm({ mode }: Props) {
           changeUpsertForm({ ...STORE_FORM_INPUT.name }.name, e.target.value);
         }}
       />
-      <div className="w-full">
+      <div className="flex w-full flex-col gap-2">
         <label>{STORE_FORM_DROPDOWN.category.label}</label>
         <SelectDropdown
           options={STORE_FORM_DROPDOWN.category.options}
@@ -35,7 +34,7 @@ export default function StoreUpsertForm({ mode }: Props) {
           }}
         />
       </div>
-      <div className="w-full">
+      <div className="flex w-full flex-col gap-2">
         <label>{STORE_FORM_DROPDOWN.address1.label}</label>
         <SelectDropdown
           options={STORE_FORM_DROPDOWN.address1.options}
@@ -59,9 +58,10 @@ export default function StoreUpsertForm({ mode }: Props) {
           changeUpsertForm({ ...STORE_FORM_INPUT.originalHourlyPay }.name, e.target.value);
         }}
       />
-      <ImageUploader
+      <InputField
         {...STORE_FORM_INPUT.imageUrl}
-        image={null}
+        inputType="image"
+        image={undefined}
         className="w-full"
         selectImage={async (value) => {
           changeUpsertForm({ ...STORE_FORM_INPUT.imageUrl }.name, value);
@@ -73,6 +73,7 @@ export default function StoreUpsertForm({ mode }: Props) {
         onChange={(e) => {
           changeUpsertForm({ ...STORE_FORM_INPUT.description }.name, e.target.value);
         }}
+        className="min-h-[153px]"
       />
 
       <div className="h-12 w-full md:w-78">
