@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { UpsertStoreType } from '../../types/store';
 import { INITIAL_UPSERT_STORE } from '../../values/initiail-value';
 import axiosClient from '../../../../lib/instance';
+import { AxiosError } from 'axios';
 
 export default function useStoreUpsertForm() {
   const [formData, setFormData] = useState<UpsertStoreType>(INITIAL_UPSERT_STORE);
@@ -12,8 +13,14 @@ export default function useStoreUpsertForm() {
   };
 
   const submitUpsertForm = async () => {
-    await axiosClient.post(`/shops`, { ...formData });
-    /**@todo 에러 핸들링 */
+    try {
+      await axiosClient.post(`/shops`, { ...formData });
+    } catch (error) {
+      if (error instanceof AxiosError && error.status === 409) {
+        console.error('이미 등록된 가게가 존재합니다.');
+      }
+      /**@todo 에러 핸들링 업데이트 */
+    }
   };
 
   return { changeUpsertForm, submitUpsertForm };
