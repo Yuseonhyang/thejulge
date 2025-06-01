@@ -9,7 +9,8 @@ interface Props {
   mode: 'register' | 'edit';
 }
 export default function StoreUpsertForm({ mode }: Props) {
-  const buttonText = mode === 'register' ? STORE_BUTTON.createStore : STORE_BUTTON.editStore;
+  const buttonText = mode === 'register' ? STORE_BUTTON.registerStore : STORE_BUTTON.editStore;
+
   return (
     <form className="flex w-full flex-col items-center gap-5 md:grid md:grid-cols-2">
       <InputField {...STORE_FORM_INPUT.name} inputType="input" onChange={() => {}} />
