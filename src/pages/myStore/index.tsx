@@ -1,4 +1,4 @@
-import { INITIAL_STORE } from './value/initiail-value';
+import { INITIAL_STORE } from './values/initiail-value';
 import { getUserInfo } from '../../hooks/use-Tanstack-query';
 import NoStore from './components/NoStore';
 import MyStore from './components/MyStore';

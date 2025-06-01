@@ -1,6 +1,7 @@
 type UserType = 'employer' | 'employee';
 
 export interface Store {
+  //임시 타입
   store: {
     image: string;
     storeName: string;
@@ -22,6 +23,7 @@ export interface Shop {
     originalHourlyPay: number;
   };
 }
+
 export type UserInfoResponseType = {
   data: {
     item: {
@@ -36,3 +38,13 @@ export type UserInfoResponseType = {
     };
   };
 };
+
+export interface UpsertStoreType {
+  name: Shop['item']['name'];
+  category: Shop['item']['category'];
+  address1: Shop['item']['address1'];
+  address2: Shop['item']['address2'];
+  originalHourlyPay: Shop['item']['originalHourlyPay'];
+  imageUrl: Shop['item']['imageUrl'];
+  description: Shop['item']['description'];
+}
