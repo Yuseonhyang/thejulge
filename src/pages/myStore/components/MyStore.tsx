@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../types/store';
-import Button from '../../../../components/common/Button';
-import { PATHS } from '../../../../constants/path';
+import { PATHS } from '../../../constants/path';
+import Button from '../../../components/common/Button';
 
 export default function MyStore({ store }: Store) {
   const { image, storeName, type, address, description } = store;

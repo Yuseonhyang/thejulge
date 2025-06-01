@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import decodeJWT from '../utils/decode-jwt';
-import { UserInfoResponseType } from '../pages/myStore/_myStorePage/types/store';
+import { UserInfoResponseType } from '../pages/myStore/types/store';
 import axiosClient from '../lib/instance';
 
 export function getUserInfo() {

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
-import { STORE_BUTTON } from '../../../../constants/button';
-import { PATHS } from '../../../../constants/path';
+import Button from '../../../components/common/Button';
+import { STORE_BUTTON } from '../../../constants/button';
+import { PATHS } from '../../../constants/path';
 
 export default function NoStore() {
   const navigate = useNavigate();

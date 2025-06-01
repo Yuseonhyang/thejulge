@@ -1,8 +1,8 @@
-import MyStore from './_myStorePage/components/MyStore';
-import { INITIAL_STORE } from './_myStorePage/value/initiail-value';
+import { INITIAL_STORE } from './value/initiail-value';
 import { getUserInfo } from '../../hooks/use-Tanstack-query';
-import NoStore from './_myStorePage/components/NoStore';
-import NoRecruit from './_myStorePage/components/NoRecruit';
+import NoStore from './components/NoStore';
+import MyStore from './components/MyStore';
+import NoRecruit from './components/NoRecruit';
 
 export default function MyStorePage() {
   const data = getUserInfo();

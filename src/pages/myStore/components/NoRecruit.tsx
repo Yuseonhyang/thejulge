@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
-import { STORE_BUTTON } from '../../../../constants/button';
+import Button from '../../../components/common/Button';
+import { STORE_BUTTON } from '../../../constants/button';
 
 export default function NoRecruit() {
   const navigate = useNavigate();
