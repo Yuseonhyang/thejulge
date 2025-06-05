@@ -10,6 +10,7 @@ import NoNotices from './components/NoNotices';
 
 export default function MyStorePage() {
   const [notices, setNotices] = useState<Notices>(INITIAL_NOTICES);
+  const [shopId, setShopId] = useState(0);
   const { data, isLoading } = useUserInfoQuery();
   const shop = data?.data.item.shop.item;
 
@@ -22,6 +23,7 @@ export default function MyStorePage() {
   useEffect(() => {
     if (shop) {
       fetchNotices(shop.id);
+      setShopId(shop.id);
     }
   }, [shop]);
 
@@ -35,7 +37,7 @@ export default function MyStorePage() {
       {shop && (
         <section className="flex flex-col gap-4 md:gap-8">
           <h1 className="text-3xl-bold">내 공고</h1>
-          {notices.count < 1 ? <NoNotices /> : <MyNotices />}
+          {notices.count < 1 ? <NoNotices shopId={shopId} /> : <MyNotices />}
         </section>
       )}
     </div>

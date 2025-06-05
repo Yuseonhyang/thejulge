@@ -14,3 +14,10 @@ export interface Notices {
   hasNext: boolean; // 다음 내용 존재 여부
   items: Notice[];
 }
+
+export interface NoticeUpsertType {
+  hourlyPay: Notice['hourlyPay'];
+  startsAt: Notice['startsAt'];
+  workhour: Notice['workhour'];
+  description: Notice['description'];
+}
