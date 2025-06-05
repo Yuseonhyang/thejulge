@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ImageUploaderIcon from '../../../assets/ImageUploaderIcon';
 import { getBase64 } from '../../../utils/formatImageFileToBase64';
 import createImageURL from '../../../api/createImageUrl';
@@ -11,8 +11,13 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function ImageUploader({ className, image, selectImage, ...props }: Props) {
-  const [currentImage, setCurrentImage] = useState<string | null>(image);
+  const [currentImage, setCurrentImage] = useState<string | null>(image || null);
   const inputId = 'file-upload';
+
+  useEffect(() => {
+    if (!currentImage && image) setCurrentImage(image);
+    console.log(image);
+  }, [image]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

@@ -27,6 +27,7 @@ export type UserInfoResponseType = {
 };
 
 export interface UpsertStoreType {
+  id: Shop['id'];
   name: Shop['name'];
   category: Shop['category'];
   address1: Shop['address1'];

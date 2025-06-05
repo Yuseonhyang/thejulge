@@ -19,7 +19,7 @@ export default function StoreUpsertForm({ mode }: Props) {
 
   const buttonText = mode === 'register' ? STORE_BUTTON.registerStore : STORE_BUTTON.editStore;
 
-  const { formData, changeUpsertForm, submitUpsertForm } = useStoreUpsertForm(storeData);
+  const { formData, changeUpsertForm, submitUpsertForm } = useStoreUpsertForm(storeData, mode);
 
   useEffect(() => {
     if (mode === 'edit' && shop) {
