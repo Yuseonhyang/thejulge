@@ -1,27 +1,14 @@
 type UserType = 'employer' | 'employee';
 
-export interface Store {
-  //임시 타입
-  store: {
-    image: string;
-    storeName: string;
-    type: string;
-    address: string;
-    description: string;
-  };
-}
-
 export interface Shop {
-  item: {
-    id: string;
-    name: string;
-    category: string;
-    address1: string;
-    address2: string;
-    description: string;
-    imageUrl: string;
-    originalHourlyPay: number;
-  };
+  id: string;
+  name: string;
+  category: string;
+  address1: string;
+  address2: string;
+  description: string;
+  imageUrl: string;
+  originalHourlyPay: number;
 }
 
 export type UserInfoResponseType = {
@@ -40,11 +27,11 @@ export type UserInfoResponseType = {
 };
 
 export interface UpsertStoreType {
-  name: Shop['item']['name'];
-  category: Shop['item']['category'];
-  address1: Shop['item']['address1'];
-  address2: Shop['item']['address2'];
-  originalHourlyPay: Shop['item']['originalHourlyPay'];
-  imageUrl: Shop['item']['imageUrl'];
-  description: Shop['item']['description'];
+  name: Shop['name'];
+  category: Shop['category'];
+  address1: Shop['address1'];
+  address2: Shop['address2'];
+  originalHourlyPay: Shop['originalHourlyPay'];
+  imageUrl: Shop['imageUrl'];
+  description: Shop['description'];
 }
