@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from '../../../../components/common/Button';
 import SelectDropdown from '../../../../components/common/Dropdown/SelectDropdown';
 import InputField from '../../../../components/common/InputField';
-import { STORE_BUTTON } from '../../../../constants/button';
+import { SHOP_BUTTON } from '../../../../constants/button';
 import { useUserInfoQuery } from '../../../../hooks/queries/useUserInfoQuery';
 import { UpsertMode } from '../../../../types/upsertMode';
 import { INITIAL_UPSERT_STORE } from '../../values/initial-value';
@@ -17,7 +17,7 @@ export default function StoreUpsertForm({ mode }: Props) {
   const [storeData, setStoreData] = useState(INITIAL_UPSERT_STORE);
   const shop = data?.data.item.shop.item;
 
-  const buttonText = mode === 'register' ? STORE_BUTTON.registerStore : STORE_BUTTON.editStore;
+  const buttonText = mode === 'register' ? SHOP_BUTTON.registerStore : SHOP_BUTTON.editStore;
 
   const { formData, changeUpsertForm, submitUpsertForm } = useStoreUpsertForm(storeData, mode);
 
