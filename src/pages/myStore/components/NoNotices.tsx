@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/common/Button';
 import { SHOP_BUTTON } from '../../../constants/button';
+import { PATHS } from '../../../constants/path';
 
 export default function NoNotices() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function NoNotices() {
         <Button
           size="parent-dependent"
           variant="primary"
-          onClick={() => navigate('/mystore/store/register')}
+          onClick={() => navigate(PATHS.NOTICE_REGISTER)}
         >
           {SHOP_BUTTON.noNotices}
         </Button>

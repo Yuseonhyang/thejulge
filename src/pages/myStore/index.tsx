@@ -1,5 +1,4 @@
 import NoShop from './components/NoStore';
-import NoRecruit from './components/NoNotices';
 import { useUserInfoQuery } from '../../hooks/queries/useUserInfoQuery';
 import MyShop from './components/MyShop';
 import { useEffect, useState } from 'react';
@@ -7,25 +6,25 @@ import axiosInstance from '../../lib/instance';
 import { Notices } from './types/notice';
 import { INITIAL_NOTICES } from './values/initial-value';
 import MyNotices from './components/MyNotices';
+import NoNotices from './components/NoNotices';
 
 export default function MyStorePage() {
-  const [shopId, setShopId] = useState(0);
   const [notices, setNotices] = useState<Notices>(INITIAL_NOTICES);
   const { data, isLoading } = useUserInfoQuery();
   const shop = data?.data.item.shop.item;
 
-  const fetchNotices = async () => {
+  const fetchNotices = async (shopId: string) => {
+    if (!shopId) return;
     const { data } = await axiosInstance(`/shops/${shopId}/notices`);
-    console.log(data);
-    // setNotices(res);
+    setNotices(data);
   };
 
   useEffect(() => {
     if (shop) {
-      setShopId(shop.id);
-      fetchNotices();
+      fetchNotices(shop.id);
     }
   }, [shop]);
+
   return (
     <div className="flex w-full flex-col gap-20">
       <section className="flex flex-col gap-4 md:gap-8">
@@ -36,7 +35,7 @@ export default function MyStorePage() {
       {shop && (
         <section className="flex flex-col gap-4 md:gap-8">
           <h1 className="text-3xl-bold">내 공고</h1>
-          {notices.count < 1 ? <NoRecruit /> : <MyNotices />}
+          {notices.count < 1 ? <NoNotices /> : <MyNotices />}
         </section>
       )}
     </div>
