@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/common/Button';
 import { SHOP_BUTTON } from '../../../constants/button';
 
-export default function NoRecruit() {
+export default function NoNotices() {
   const navigate = useNavigate();
 
   return (
@@ -14,7 +14,7 @@ export default function NoRecruit() {
           variant="primary"
           onClick={() => navigate('/mystore/store/register')}
         >
-          {SHOP_BUTTON.noRecruit}
+          {SHOP_BUTTON.noNotices}
         </Button>
       </div>
     </div>

@@ -5,7 +5,7 @@ export const AUTH_BUTTON = {
 
 export const SHOP_BUTTON = {
   noShop: '가게 등록하기',
-  noRecruit: '공고 등록하기',
+  noNotices: '공고 등록하기',
   registerStore: '등록하기',
   editStore: '완료하기',
 };
