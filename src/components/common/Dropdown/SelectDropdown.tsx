@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Dropdown from '.';
 import { defaultContainerStyle, defaultOptionStyle } from './style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SelectDropdownIcon from '../../../assets/icons/SelectDropdownIcon';
 
 interface Props {
@@ -18,9 +18,10 @@ export default function SelectDropdown({
   options,
   onSelect,
   placement = 'right-0 top-[calc(100%+8px)]',
+  currentOption,
   ...props
 }: Props) {
-  const [selectedOption, setSelectedOption] = useState(props.currentOption || null);
+  const [selectedOption, setSelectedOption] = useState(currentOption || null);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelectOption = (option: string) => {
@@ -28,6 +29,10 @@ export default function SelectDropdown({
     onSelect(option);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (currentOption) setSelectedOption(currentOption);
+  }, [currentOption]);
 
   return (
     <Dropdown
