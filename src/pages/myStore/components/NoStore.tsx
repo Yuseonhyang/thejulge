@@ -3,7 +3,7 @@ import Button from '../../../components/common/Button';
 import { STORE_BUTTON } from '../../../constants/button';
 import { PATHS } from '../../../constants/path';
 
-export default function NoStore() {
+export default function NoShop() {
   const navigate = useNavigate();
 
   return (
