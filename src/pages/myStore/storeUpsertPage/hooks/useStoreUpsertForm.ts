@@ -1,17 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UpsertStoreType } from '../../types/store';
-import { INITIAL_UPSERT_STORE } from '../../values/initiail-value';
 import axiosClient from '../../../../lib/instance';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../../../constants/path';
+import { INITIAL_UPSERT_STORE } from '../../values/initial-value';
 
-export default function useStoreUpsertForm() {
-  const [formData, setFormData] = useState<UpsertStoreType>(INITIAL_UPSERT_STORE);
+export default function useStoreUpsertForm(initialStoreData: UpsertStoreType) {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState<UpsertStoreType>(
+    initialStoreData || INITIAL_UPSERT_STORE
+  );
+
+  useEffect(() => {
+    setFormData(initialStoreData);
+  }, [initialStoreData]);
+
   const changeUpsertForm = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
-    console.log(formData);
   };
 
   const submitUpsertForm = async () => {
@@ -26,5 +32,5 @@ export default function useStoreUpsertForm() {
     }
   };
 
-  return { changeUpsertForm, submitUpsertForm };
+  return { changeUpsertForm, submitUpsertForm, formData };
 }

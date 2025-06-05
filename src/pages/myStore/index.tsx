@@ -4,8 +4,8 @@ import NoRecruit from './components/NoRecruit';
 import { useUserInfoQuery } from '../../hooks/queries/useUserInfoQuery';
 
 export default function MyStorePage() {
-  const data = useUserInfoQuery();
-  const shop = data?.item.shop;
+  const { data, isLoading } = useUserInfoQuery();
+  const shop = data?.data.item.shop;
 
   return (
     <div className="flex w-full flex-col gap-20">

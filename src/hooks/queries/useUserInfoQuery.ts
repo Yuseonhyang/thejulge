@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import decodeJWT from '../../utils/decode-jwt';
-import { UserInfoResponseType } from '../../pages/myStore/types/store';
-import getUserInfo from '../../api/auth';
+import axiosClient from '../../lib/instance';
 
 const { userId } = decodeJWT();
 
-export default async function useUserInfoQuery() {
-  return useQuery<UserInfoResponseType>({
+export function useUserInfoQuery() {
+  const res = useQuery({
     queryKey: ['userInfo'],
-    queryFn: () => getUserInfo(userId),
+    queryFn: async () => await axiosClient(`/users/${userId}`),
+    staleTime: 1000 * 1000,
   });
+  return res;
 }
