@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import ImageUploaderIcon from '../../../assets/ImageUploaderIcon';
 import { getBase64 } from '../../../utils/formatImageFileToBase64';
-import createImageURL from '../../../api/api';
+import createImageURL from '../../../api/createImageUrl';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
