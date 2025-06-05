@@ -1,10 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PATHS } from '../../../constants/path';
 import StoreUpsertForm from './components/StoreUpsertForm';
+import { UpsertMode } from '../../../types/upsertMode';
 
 export default function StoreUpsertPage() {
   const navigate = useNavigate();
-  const mode = 'register';
+  const pathname = useLocation().pathname;
+  const mode: UpsertMode = pathname === PATHS.STORE_REGISTER ? 'register' : 'edit';
 
   return (
     <div className="flex w-full flex-col gap-6 md:gap-8">

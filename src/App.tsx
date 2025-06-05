@@ -8,7 +8,8 @@ import MyStorePage from './pages/myStore';
 import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import StoreUpsertPage from './pages/myStore/storeUpsert';
+import StoreUpsertPage from './pages/myStore/storeUpsertPage';
+import NoticeUpsertPage from './pages/myStore/NoticeUpsertPage';
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,8 @@ function App() {
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
             <Route path="mystore/posts/:postId" element={<PostId />} />
+            <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
+            <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

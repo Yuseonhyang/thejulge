@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import WageComparedToPrev from '../../../../assets/icons/WageComparedToPrev';
 import { useNavigate } from 'react-router-dom';
+import WageComparedToPrev from '../../../assets/icons/WageComparedToPrev';
 
-export default function RecruitCard({}) {
+export default function NoticesCard({}) {
   const navigate = useNavigate();
   const image = '';
   const storeName = '식당이름';

@@ -1,24 +1,41 @@
-import MyStore from './_myStorePage/components/MyStore';
-import { INITIAL_STORE } from './_myStorePage/value/initiail-value';
-import { getUserInfo } from '../../hooks/use-Tanstack-query';
-import NoStore from './_myStorePage/components/NoStore';
-import NoRecruit from './_myStorePage/components/NoRecruit';
+import NoShop from './components/NoStore';
+import { useUserInfoQuery } from '../../hooks/queries/useUserInfoQuery';
+import MyShop from './components/MyShop';
+import { useEffect, useState } from 'react';
+import axiosInstance from '../../lib/instance';
+import { Notices } from './types/notice';
+import { INITIAL_NOTICES } from './values/initial-value';
+import MyNotices from './components/MyNotices';
+import NoNotices from './components/NoNotices';
 
 export default function MyStorePage() {
-  const data = getUserInfo();
-  const shop = data?.item.shop;
+  const [notices, setNotices] = useState<Notices>(INITIAL_NOTICES);
+  const { data, isLoading } = useUserInfoQuery();
+  const shop = data?.data.item.shop.item;
+
+  const fetchNotices = async (shopId: string) => {
+    if (!shopId) return;
+    const { data } = await axiosInstance(`/shops/${shopId}/notices`);
+    setNotices(data);
+  };
+
+  useEffect(() => {
+    if (shop) {
+      fetchNotices(shop.id);
+    }
+  }, [shop]);
 
   return (
     <div className="flex w-full flex-col gap-20">
       <section className="flex flex-col gap-4 md:gap-8">
         <h1 className="text-3xl-bold">내 가게</h1>
-        {!shop ? <NoStore /> : <MyStore store={INITIAL_STORE} />}
+        {!shop ? <NoShop /> : <MyShop shop={shop} />}
       </section>
 
       {shop && (
         <section className="flex flex-col gap-4 md:gap-8">
           <h1 className="text-3xl-bold">내 공고</h1>
-          <NoRecruit />
+          {notices.count < 1 ? <NoNotices /> : <MyNotices />}
         </section>
       )}
     </div>

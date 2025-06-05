@@ -3,20 +3,20 @@ import { PATHS } from '../constants/path';
 
 const BASE_URL = import.meta.env.VITE_PUBLIC_API_URL;
 
-const axiosClient = axios.create({
+const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 5000,
   headers: { 'Content-Type': 'application/json' },
 });
 
-axiosClient.interceptors.request.use((config) => {
+axiosInstance.interceptors.request.use((config) => {
   const accessToken = localStorage.getItem('accessToken');
   if (!accessToken) return config;
   config.headers.set('Authorization', `Bearer ${accessToken}`);
   return config;
 });
 
-axiosClient.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     // const originalRequest = error.config;
@@ -66,4 +66,4 @@ axiosClient.interceptors.response.use(
   }
 );
 
-export default axiosClient;
+export default axiosInstance;

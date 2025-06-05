@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
-import { STORE_BUTTON } from '../../../../constants/button';
-import { PATHS } from '../../../../constants/path';
+import Button from '../../../components/common/Button';
+import { SHOP_BUTTON } from '../../../constants/button';
+import { PATHS } from '../../../constants/path';
 
-export default function NoStore() {
+export default function NoShop() {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ export default function NoStore() {
           size="parent-dependent"
           onClick={() => navigate(PATHS.STORE_REGISTER)}
         >
-          {STORE_BUTTON.noStore}
+          {SHOP_BUTTON.noShop}
         </Button>
       </div>
     </div>
