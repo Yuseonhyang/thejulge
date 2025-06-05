@@ -8,7 +8,9 @@ interface StoreProps {
 }
 export default function MyShop({ shop }: StoreProps) {
   const { imageUrl, name, category, address1, description } = shop;
+
   const navigate = useNavigate();
+
   return (
     <div className="bg-red10 flex w-full flex-col gap-3 rounded-xl border-1 border-none px-5 py-5 md:gap-4 md:px-6 md:py-6 lg:flex-row lg:gap-8">
       <img src={imageUrl} alt="내가게 이미지" className="h-full w-full rounded-xl" />
