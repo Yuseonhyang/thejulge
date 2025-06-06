@@ -1,5 +1,5 @@
-import Table from '../myPage/_myPage/components/Table';
 import DetailNoticeSection from '../../components/DetailNoticeSection';
+import Table from '../../components/Table';
 
 export default function NoticePage() {
   return (

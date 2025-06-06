@@ -1,5 +1,5 @@
+import Table from '../../components/Table';
 import MyProfile from './_myPage/components/MyProfile';
-import Table from './_myPage/components/Table';
 
 export default function MyPage() {
   return (
