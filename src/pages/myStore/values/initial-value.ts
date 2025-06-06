@@ -1,4 +1,4 @@
-import { Notices, NoticeUpsertType } from '../types/notice';
+import { Notice, Notices, NoticeUpsertType } from '../types/notice';
 import { UpsertStoreType } from '../types/store';
 
 export const INITIAL_UPSERT_STORE: UpsertStoreType = {
@@ -24,4 +24,13 @@ export const INITIAL_UPSERT_NOTICE: NoticeUpsertType = {
   startsAt: '',
   workhour: 0,
   description: '',
+};
+
+export const INITIAL_NOTICE: Notice = {
+  id: '',
+  hourlyPay: 0,
+  startsAt: '',
+  workhour: 0,
+  description: '',
+  closed: false,
 };

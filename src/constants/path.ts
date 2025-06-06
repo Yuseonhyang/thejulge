@@ -10,7 +10,7 @@ export const PATHS = {
   STORE_EDIT: '/mystore/edit',
 
   NOTICE_REGISTER: '/mystore/notice/register',
-  NOTICE_Edit: '/mystore/notice/edit',
+  NOTICE_EDIT: '/mystore/notice/edit',
 
   NOTICE_DETAIL: '/mystore/notices',
 };
