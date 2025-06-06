@@ -12,6 +12,7 @@ export default function MyNotices({ notices, shop }: MyNoticesProps) {
       {notices.items.map((notice) => {
         return (
           <NoticesCard
+            key={notice.item.id}
             notice={notice.item}
             name={shop.name || ''}
             address1={shop.address1 || ''}
