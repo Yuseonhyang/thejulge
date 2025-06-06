@@ -4,7 +4,7 @@ import { SHOP_BUTTON } from '../../../constants/button';
 import { PATHS } from '../../../constants/path';
 import { useEffect, useState } from 'react';
 
-export default function NoNotices({ shopId }: { shopId: number }) {
+export default function NoNotices({ shopId }: { shopId: string }) {
   const [id, setId] = useState(shopId);
   const navigate = useNavigate();
 

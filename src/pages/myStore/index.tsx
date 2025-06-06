@@ -7,12 +7,13 @@ import { Notices } from './types/notice';
 import { INITIAL_NOTICES } from './values/initial-value';
 import MyNotices from './components/MyNotices';
 import NoNotices from './components/NoNotices';
+import { Shop } from './types/store';
 
 export default function MyStorePage() {
   const [notices, setNotices] = useState<Notices>(INITIAL_NOTICES);
-  const [shopId, setShopId] = useState(0);
+  const [shopId, setShopId] = useState('');
+  const [shop, setShop] = useState<Shop>();
   const { data, isLoading } = useUserInfoQuery();
-  const shop = data?.data.item.shop.item;
 
   const fetchNotices = async (shopId: string) => {
     if (!shopId) return;
@@ -21,11 +22,12 @@ export default function MyStorePage() {
   };
 
   useEffect(() => {
-    if (shop) {
-      fetchNotices(shop.id);
-      setShopId(shop.id);
+    if (data) {
+      setShop(data?.item.shop.item);
+      fetchNotices(data?.item.shop.item.id);
+      setShopId(data?.item.shop.item.id);
     }
-  }, [shop]);
+  }, [data]);
 
   return (
     <div className="flex w-full flex-col gap-20">
@@ -37,7 +39,11 @@ export default function MyStorePage() {
       {shop && (
         <section className="flex flex-col gap-4 md:gap-8">
           <h1 className="text-3xl-bold">내 공고</h1>
-          {notices.count < 1 ? <NoNotices shopId={shopId} /> : <MyNotices />}
+          {notices.count < 1 ? (
+            <NoNotices shopId={shopId} />
+          ) : (
+            <MyNotices notices={notices} shop={shop} />
+          )}
         </section>
       )}
     </div>

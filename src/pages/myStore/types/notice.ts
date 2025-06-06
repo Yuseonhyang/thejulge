@@ -12,7 +12,7 @@ export interface Notices {
   limit: number;
   count: number; // 전체 개수
   hasNext: boolean; // 다음 내용 존재 여부
-  items: Notice[];
+  items: { item: Notice; link: [] }[];
 }
 
 export interface NoticeUpsertType {

@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import MyPage from './pages/myPage';
-import PostId from './pages/postId';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
 import MyStorePage from './pages/myStore';
@@ -9,7 +8,8 @@ import LoginPage from './pages/login';
 import SignupPage from './pages/signup';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import StoreUpsertPage from './pages/myStore/storeUpsertPage';
-import NoticeUpsertPage from './pages/myStore/NoticeUpsertPage';
+import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
+import NoticePage from './pages/myStore/noticeIdPage';
 
 const queryClient = new QueryClient();
 
@@ -29,9 +29,9 @@ function App() {
             <Route path="mystore" element={<MyStorePage />} />
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
-            <Route path="mystore/posts/:postId" element={<PostId />} />
             <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
             <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
+            <Route path="mystore/notices/:noticeId" element={<NoticePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
