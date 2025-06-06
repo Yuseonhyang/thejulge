@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import useOutSideClickAutoClose from '../../../hooks/use-outside-click-auto-close';
+import useOutSideClickAutoClose from '../../../hooks/useOutsideClickAutoClose';
 
 interface DropDownProps {
   trigger: ReactNode;
