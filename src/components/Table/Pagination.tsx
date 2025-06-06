@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import PaginationArrow from '../../../../../assets/icons/PaginationArrow';
-import usePagination from '../../hooks/usePagination';
+import PaginationArrow from '../../assets/icons/PaginationArrow';
+import usePagination from '../../pages/myPage/_myPage/hooks/usePagination';
 
 export default function Pagination({}) {
   const totalPage = 21;
