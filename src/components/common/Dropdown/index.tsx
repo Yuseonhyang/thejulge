@@ -10,8 +10,8 @@ export default function Dropdown({ trigger, children }: DropDownProps) {
   const { isOpen, toggleIsOpen, close, ref } = useOutSideClickAutoClose(false);
 
   return (
-    <div className="relative w-full" ref={ref}>
-      <div className="w-full cursor-pointer" onClick={() => toggleIsOpen()}>
+    <div className="relative" ref={ref}>
+      <div className="cursor-pointer" onClick={() => toggleIsOpen()}>
         {trigger}
       </div>
       {isOpen && <> {children({ close })}</>}
