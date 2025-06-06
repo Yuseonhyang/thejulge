@@ -8,9 +8,13 @@ import { useEffect, useState } from 'react';
 import getUserInfo from '../../../../api/auth';
 import decodeJWT from '../../../../utils/decode-jwt';
 import useHeaderHandler from '../../../../hooks/useSearchBar';
+import axiosInstance from '../../../../lib/instance';
+import { NotificationType } from './types/notificationType';
 
 export function Header() {
   const [userType, setUserType] = useState<UserType>('employee');
+  const [notifications, setNotifications] = useState<NotificationType[]>([]);
+
   const { handleChangeKeyword, keyword, handleSubmitKeyword } = useHeaderHandler();
 
   const mypageLinkText = userType === 'employee' ? '내 프로필' : '내가게';
@@ -22,8 +26,14 @@ export function Header() {
     setUserType(userInfo.type);
   };
 
+  const fetchNotification = async () => {
+    const { data } = await axiosInstance(`/users/${userId}/alerts`);
+    setNotifications(data.items);
+  };
+
   useEffect(() => {
     fetchUser();
+    fetchNotification();
   }, [userId]);
 
   return (
@@ -56,7 +66,7 @@ export function Header() {
           </Link>
           <p className="text-md-bold md:text-lg-bold w-fit">로그아웃</p>
           <NotificationDropdown
-            notifications={['']}
+            notifications={notifications}
             hasNewNotification={false}
             onMarkAsRead={() => {}}
             placement="right-0"

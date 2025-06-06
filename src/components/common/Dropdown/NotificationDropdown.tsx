@@ -3,15 +3,16 @@ import Dropdown from '.';
 import { defaultContainerStyle } from './style';
 import NotificationIcon from '../../../assets/icons/NotificationIcon';
 import Notification from './Notification';
+import { NotificationType } from '../Layout/Header/types/notificationType';
 
 /**
- * //@todo notifications 타입 수정
+ * //@todo
 //hasNewNotification 의 처리 수정
  */
 
 interface Props {
-  notifications: string[];
-  onMarkAsRead: (option: string) => void;
+  notifications: NotificationType[];
+  onMarkAsRead: (notification: NotificationType) => void;
   hasNewNotification: boolean;
 
   containerWidth?: string;
@@ -25,7 +26,7 @@ export default function NotificationDropdown({
   containerWidth = '368',
   ...props
 }: Props) {
-  const handleSelectOption = (notification: string) => {
+  const handleSelectOption = (notification: NotificationType) => {
     props.onMarkAsRead(notification);
   };
 
@@ -46,9 +47,9 @@ export default function NotificationDropdown({
               <h4 className="text-gray50">아직 알림이 없습니다.</h4>
             ) : (
               <>
-                {notifications.map((notification, idx) => (
+                {notifications.map((notification) => (
                   <div
-                    key={notification + idx}
+                    key={notification.item.id}
                     onClick={() => {
                       handleSelectOption(notification);
                     }}
