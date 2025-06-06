@@ -56,7 +56,7 @@ export default function InputField({
   };
 
   return (
-    <div
+    <form
       className={clsx('flex h-full w-full flex-col items-start')}
       style={{ gap: `${props.gapSize}px` }}
     >
@@ -65,6 +65,6 @@ export default function InputField({
         {renderInputField()}
         {errorMessage && <p className="text-red40 text-xs-rg pl-2">{errorMessage}</p>}
       </div>
-    </div>
+    </form>
   );
 }

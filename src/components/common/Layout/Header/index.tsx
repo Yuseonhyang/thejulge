@@ -4,11 +4,27 @@ import NotificationDropdown from '../../Dropdown/NotificationDropdown';
 import { PLACEHOLDERS } from '../../../../constants/placeholders';
 import { PATHS } from '../../../../constants/path';
 import { UserType } from '../../../../types/userType';
+import { useEffect, useState } from 'react';
+import getUserInfo from '../../../../api/auth';
+import decodeJWT from '../../../../utils/decode-jwt';
+import useHeaderHandler from '../../../../hooks/useSearchBar';
 
 export function Header() {
-  const userType: UserType = 'employee';
+  const [userType, setUserType] = useState<UserType>('employee');
+  const { handleChangeKeyword, keyword, handleSubmitKeyword } = useHeaderHandler();
+
   const mypageLinkText = userType === 'employee' ? '내 프로필' : '내가게';
   const mypageLink = userType === 'employee' ? PATHS.MYPROFILE : PATHS.MYSTORE;
+  const { userId } = decodeJWT();
+
+  const fetchUser = async () => {
+    const userInfo = await getUserInfo(userId);
+    setUserType(userInfo.type);
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, [userId]);
 
   return (
     <div className="fixed top-0 left-0 flex h-[102px] w-full flex-col items-center justify-center gap-4 bg-white px-5 py-2.5 md:h-[70px] md:px-8 md:py-[15px]">
@@ -22,7 +38,11 @@ export function Header() {
           <div className="hidden h-10 w-86 md:block">
             <InputField
               inputType="search"
-              onChange={() => {}}
+              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                handleChangeKeyword(e.target.value)
+              }
+              onSubmit={handleSubmitKeyword}
+              value={keyword}
               leftSlot={<img src="src/public/icons/search-icon.svg" />}
               placeholder={PLACEHOLDERS.search}
               id="search"
