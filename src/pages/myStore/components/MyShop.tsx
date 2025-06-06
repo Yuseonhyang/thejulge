@@ -7,7 +7,7 @@ interface StoreProps {
   shop: Shop;
 }
 export default function MyShop({ shop }: StoreProps) {
-  const { imageUrl, name, category, address1, description } = shop;
+  const { imageUrl, name, category, address1, description, id } = shop;
 
   const navigate = useNavigate();
 
@@ -32,7 +32,11 @@ export default function MyShop({ shop }: StoreProps) {
           >
             편집하기
           </Button>
-          <Button variant="primary" size="parent-dependent" onClick={() => navigate('/')}>
+          <Button
+            variant="primary"
+            size="parent-dependent"
+            onClick={() => navigate(`${PATHS.NOTICE_REGISTER}?shopId=${id}`)}
+          >
             공고 등록하기
           </Button>
         </div>

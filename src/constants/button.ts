@@ -10,6 +10,11 @@ export const SHOP_BUTTON = {
   editStore: '완료하기',
 };
 
+export const NOTICE_BUTTON = {
+  registerNotice: '등록하기',
+  editNotice: '수정하기',
+};
+
 export const FILTER_BUTTON = {
   filter: '상세 필터',
   reset: '초기화',
