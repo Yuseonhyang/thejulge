@@ -5,13 +5,13 @@ import { UserType } from '../../../../types/userType';
 import { useEffect, useState } from 'react';
 import getUserInfo from '../../../../api/auth';
 import decodeJWT from '../../../../utils/decode-jwt';
-import axiosInstance from '../../../../lib/instance';
-import { NotificationType } from './types/notificationType';
+import { NotificationsType } from './types/notificationType';
 import { HeaderSearchBar } from './components/HeaderSearchBar';
+import { getNotification } from '../../../../api/notification';
 
 export function Header() {
   const [userType, setUserType] = useState<UserType>('employee');
-  const [notifications, setNotifications] = useState<NotificationType[]>([]);
+  const [notifications, setNotifications] = useState<NotificationsType>();
 
   const mypageLinkText = userType === 'employee' ? '내 프로필' : '내가게';
   const mypageLink = userType === 'employee' ? PATHS.MYPROFILE : PATHS.MYSTORE;
@@ -23,8 +23,8 @@ export function Header() {
   };
 
   const fetchNotification = async () => {
-    const { data } = await axiosInstance(`/users/${userId}/alerts`);
-    setNotifications(data.items);
+    const notifications = await getNotification(userId);
+    setNotifications(notifications);
   };
 
   useEffect(() => {
@@ -50,12 +50,7 @@ export function Header() {
             <p className="text-md-bold md:text-lg-bold">{mypageLinkText}</p>
           </Link>
           <p className="text-md-bold md:text-lg-bold w-fit">로그아웃</p>
-          <NotificationDropdown
-            notifications={notifications}
-            hasNewNotification={false}
-            onMarkAsRead={() => {}}
-            placement="right-0"
-          />
+          <NotificationDropdown notifications={notifications} />
         </div>
       </div>
       <div className="block h-10 w-full md:hidden">

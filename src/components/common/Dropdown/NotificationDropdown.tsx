@@ -3,55 +3,46 @@ import Dropdown from '.';
 import { defaultContainerStyle } from './style';
 import NotificationIcon from '../../../assets/icons/NotificationIcon';
 import Notification from './Notification';
-import { NotificationType } from '../Layout/Header/types/notificationType';
+import { NotificationsType } from '../Layout/Header/types/notificationType';
 
 /**
  * //@todo
-//hasNewNotification 의 처리 수정
+//notification 읽음처리 수정 - 지금은 알림이 없음
  */
 
 interface Props {
-  notifications: NotificationType[];
-  onMarkAsRead: (notification: NotificationType) => void;
-  hasNewNotification: boolean;
-
-  containerWidth?: string;
-  placement?: string;
+  notifications: NotificationsType | undefined;
 }
 
-export default function NotificationDropdown({
-  notifications = [],
-  hasNewNotification,
-  placement = 'right-0 left-0',
-  containerWidth = '368',
-  ...props
-}: Props) {
-  const handleSelectOption = (notification: NotificationType) => {
-    props.onMarkAsRead(notification);
+export default function NotificationDropdown({ notifications }: Props) {
+  if (!notifications) return;
+
+  const { count, hasNext, items } = notifications;
+
+  const onMarkAsReadNotification = async (notificationId: string) => {
+    await onMarkAsReadNotification(notificationId);
   };
 
   return (
-    <Dropdown trigger={<NotificationIcon hasNewNotification={hasNewNotification} />}>
+    <Dropdown trigger={<NotificationIcon hasNewNotification={hasNext} />}>
       {({ close: _unused }) => (
         <div
           className={clsx(
             defaultContainerStyle,
-            placement,
-            'bg-red10 flex max-h-[419px] min-h-50 flex-col gap-4 px-5 py-6'
+            'right-0 flex max-h-[419px] w-85 flex-col gap-4 bg-white px-5 py-6 md:w-92'
           )}
-          style={{ width: `${containerWidth}px` }}
         >
-          <h2 className="text-xl-bold">알림 {notifications.length}개</h2>
+          <h2 className="text-xl-bold">알림 {count}개</h2>
           <ul className="flex flex-col items-center gap-2 overflow-scroll">
-            {notifications.length < 1 ? (
+            {hasNext ? (
               <h4 className="text-gray50">아직 알림이 없습니다.</h4>
             ) : (
               <>
-                {notifications.map((notification) => (
+                {items.map((notification) => (
                   <div
                     key={notification.item.id}
                     onClick={() => {
-                      handleSelectOption(notification);
+                      onMarkAsReadNotification(notification.item.id);
                     }}
                   >
                     <Notification notification={notification} />
