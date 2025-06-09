@@ -46,18 +46,20 @@ export function Header() {
             className="h-3.75 w-20.5 lg:h-5 lg:w-27.25"
           />
           <div className="hidden h-10 w-86 md:block">
-            <InputField
-              inputType="search"
-              onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-                handleChangeKeyword(e.target.value)
-              }
-              onSubmit={handleSubmitKeyword}
-              value={keyword}
-              leftSlot={<img src="src/public/icons/search-icon.svg" />}
-              placeholder={PLACEHOLDERS.search}
-              id="search"
-              className="placeholder:text-gray50"
-            />
+            <form onSubmit={(e: React.FormEvent) => handleSubmitKeyword(e)}>
+              <InputField
+                inputType="search"
+                onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  handleChangeKeyword(e.target.value)
+                }
+                // onSubmit={handleSubmitKeyword}
+                value={keyword}
+                leftSlot={<img src="src/public/icons/search-icon.svg" />}
+                placeholder={PLACEHOLDERS.search}
+                id="search"
+                className="placeholder:text-gray50"
+              />
+            </form>
           </div>
         </div>
         <div className="text-lg-bold flex items-center gap-4 md:gap-3 lg:gap-10">
@@ -74,12 +76,14 @@ export function Header() {
         </div>
       </div>
       <div className="block h-10 w-full md:hidden">
-        <InputField
-          inputType="search"
-          onChange={() => {}}
-          leftSlot={<img src="src/public/icons/search-icon.svg" />}
-          placeholder={PLACEHOLDERS.search}
-        />
+        <form onSubmit={(e: React.FormEvent) => handleSubmitKeyword(e)}>
+          <InputField
+            inputType="search"
+            onChange={() => {}}
+            leftSlot={<img src="src/public/icons/search-icon.svg" />}
+            placeholder={PLACEHOLDERS.search}
+          />
+        </form>
       </div>
     </div>
   );
