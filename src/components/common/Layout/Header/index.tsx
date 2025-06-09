@@ -1,21 +1,17 @@
 import { Link } from 'react-router-dom';
-import InputField from '../../InputField';
 import NotificationDropdown from '../../Dropdown/NotificationDropdown';
-import { PLACEHOLDERS } from '../../../../constants/placeholders';
 import { PATHS } from '../../../../constants/path';
 import { UserType } from '../../../../types/userType';
 import { useEffect, useState } from 'react';
 import getUserInfo from '../../../../api/auth';
 import decodeJWT from '../../../../utils/decode-jwt';
-import useHeaderHandler from '../../../../hooks/useSearchBar';
 import axiosInstance from '../../../../lib/instance';
 import { NotificationType } from './types/notificationType';
+import { HeaderSearchBar } from './components/HeaderSearchBar';
 
 export function Header() {
   const [userType, setUserType] = useState<UserType>('employee');
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
-
-  const { handleChangeKeyword, keyword, handleSubmitKeyword } = useHeaderHandler();
 
   const mypageLinkText = userType === 'employee' ? '내 프로필' : '내가게';
   const mypageLink = userType === 'employee' ? PATHS.MYPROFILE : PATHS.MYSTORE;
@@ -46,20 +42,7 @@ export function Header() {
             className="h-3.75 w-20.5 lg:h-5 lg:w-27.25"
           />
           <div className="hidden h-10 w-86 md:block">
-            <form onSubmit={(e: React.FormEvent) => handleSubmitKeyword(e)}>
-              <InputField
-                inputType="search"
-                onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-                  handleChangeKeyword(e.target.value)
-                }
-                // onSubmit={handleSubmitKeyword}
-                value={keyword}
-                leftSlot={<img src="src/public/icons/search-icon.svg" />}
-                placeholder={PLACEHOLDERS.search}
-                id="search"
-                className="placeholder:text-gray50"
-              />
-            </form>
+            <HeaderSearchBar />
           </div>
         </div>
         <div className="text-lg-bold flex items-center gap-4 md:gap-3 lg:gap-10">
@@ -76,14 +59,7 @@ export function Header() {
         </div>
       </div>
       <div className="block h-10 w-full md:hidden">
-        <form onSubmit={(e: React.FormEvent) => handleSubmitKeyword(e)}>
-          <InputField
-            inputType="search"
-            onChange={() => {}}
-            leftSlot={<img src="src/public/icons/search-icon.svg" />}
-            placeholder={PLACEHOLDERS.search}
-          />
-        </form>
+        <HeaderSearchBar />
       </div>
     </div>
   );
