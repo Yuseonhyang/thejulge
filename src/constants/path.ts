@@ -4,7 +4,8 @@ export const PATHS = {
   profileEdit: '/mypage/profile/edit',
   SIGNUP: '/signup',
   MYSTORE: '/mystore',
-  MYPAGE: '/mypage',
+  MYPROFILE: '/myprofile',
+  NOTICES: '/notices',
 
   STORE_REGISTER: '/mystore/register',
   STORE_EDIT: '/mystore/edit',
