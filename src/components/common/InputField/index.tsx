@@ -5,6 +5,7 @@ import TextArea from './Textarea';
 import SearchInput from './SearchInput';
 import { PLACEHOLDERS } from '../../../constants/placeholders';
 import { InputHTMLAttributes, ReactNode } from 'react';
+import { defaultLabelStyle } from '../../../styles/common-label-style';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   inputType: 'textarea' | 'image' | 'input' | 'search';
@@ -60,7 +61,7 @@ export default function InputField({
       className={clsx('flex h-full w-full flex-col items-start')}
       style={{ gap: `${props.gapSize}px` }}
     >
-      {label && <label className="text-lg-rg text-black">{label}</label>}
+      {label && <label className={clsx(defaultLabelStyle)}>{label}</label>}
       <div className="flex h-full w-full flex-col gap-2">
         {renderInputField()}
         {errorMessage && <p className="text-red40 text-xs-rg pl-2">{errorMessage}</p>}
