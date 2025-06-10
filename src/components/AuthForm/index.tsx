@@ -35,7 +35,7 @@ export default function AuthForm({ type }: Props) {
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
             handleChangeAuthForm('email', e.target.value)
           }
-          placeholder={PLACEHOLDERS.default}
+          placeholder={PLACEHOLDERS.EMAIL}
         />
         <InputField
           label="비밀번호"
@@ -43,7 +43,7 @@ export default function AuthForm({ type }: Props) {
           onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
             handleChangeAuthForm('password', e.target.value)
           }
-          placeholder={PLACEHOLDERS.default}
+          placeholder={PLACEHOLDERS.PASSWORD}
         />
         {type === 'signup' && (
           <>
