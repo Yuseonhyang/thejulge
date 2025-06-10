@@ -9,7 +9,7 @@ import SignupPage from './pages/signup';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import StoreUpsertPage from './pages/myStore/storeUpsertPage';
 import NoticePage from './pages/noticeIdPage';
-import NoticeUpsertPage from './pages/myStore/NoticeUpsertPage';
+import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
 
 const queryClient = new QueryClient();
 
