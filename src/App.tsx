@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import StoreUpsertPage from './pages/myStore/storeUpsertPage';
 import NoticePage from './pages/noticeIdPage';
 import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
+import NoticeListPage from './pages/noticeListPage';
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,8 @@ function App() {
             <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
             <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
             <Route path="mystore/notices/:noticeId" element={<NoticePage />} />
+
+            <Route path="notices" element={<NoticeListPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
