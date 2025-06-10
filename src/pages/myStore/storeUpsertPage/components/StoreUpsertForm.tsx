@@ -13,9 +13,9 @@ interface Props {
   mode: UpsertMode;
 }
 export default function StoreUpsertForm({ mode }: Props) {
-  const { data, isLoading, status } = useUserInfoQuery();
+  const { data, isLoading } = useUserInfoQuery();
   const [storeData, setStoreData] = useState(INITIAL_UPSERT_STORE);
-  const shop = data?.data.item.shop.item;
+  const shop = data?.item.shop.item;
 
   const buttonText = mode === 'register' ? SHOP_BUTTON.registerStore : SHOP_BUTTON.editStore;
 
@@ -25,7 +25,7 @@ export default function StoreUpsertForm({ mode }: Props) {
     if (mode === 'edit' && shop) {
       setStoreData(shop);
     }
-  }, [status, mode]);
+  }, [data, mode]);
 
   if (isLoading) return <div>로딩중 ...</div>;
   return (
@@ -39,26 +39,22 @@ export default function StoreUpsertForm({ mode }: Props) {
             changeUpsertForm({ ...STORE_FORM_INPUT.name }.name, e.target.value);
           }}
         />
-        <div className="flex w-full flex-col gap-2">
-          <label>{STORE_FORM_DROPDOWN.category.label}</label>
-          <SelectDropdown
-            options={STORE_FORM_DROPDOWN.category.options}
-            currentOption={formData.category}
-            onSelect={(option: string) => {
-              changeUpsertForm(STORE_FORM_DROPDOWN.category.name, option);
-            }}
-          />
-        </div>
-        <div className="flex w-full flex-col gap-2">
-          <label>{STORE_FORM_DROPDOWN.address1.label}</label>
-          <SelectDropdown
-            options={STORE_FORM_DROPDOWN.address1.options}
-            currentOption={formData.address1}
-            onSelect={(option: string) => {
-              changeUpsertForm(STORE_FORM_DROPDOWN.address1.name, option);
-            }}
-          />
-        </div>
+        <SelectDropdown
+          options={STORE_FORM_DROPDOWN.category.options}
+          currentOption={formData.category}
+          onSelect={(option: string) => {
+            changeUpsertForm(STORE_FORM_DROPDOWN.category.name, option);
+          }}
+          label={STORE_FORM_DROPDOWN.category.label}
+        />
+        <SelectDropdown
+          options={STORE_FORM_DROPDOWN.address1.options}
+          currentOption={formData.address1}
+          onSelect={(option: string) => {
+            changeUpsertForm(STORE_FORM_DROPDOWN.address1.name, option);
+          }}
+          label={STORE_FORM_DROPDOWN.address1.label}
+        />
         <InputField
           {...STORE_FORM_INPUT.address2}
           inputType="input"

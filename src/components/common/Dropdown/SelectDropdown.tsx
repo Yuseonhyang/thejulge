@@ -8,6 +8,7 @@ interface Props {
   options: string[];
   onSelect: (option: string) => void;
 
+  label?: string;
   currentOption?: string;
   containerWidth?: string;
   placement?: string;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function SelectDropdown({
+  label,
   options,
   onSelect,
   placement = 'right-0 top-[calc(100%+8px)]',
@@ -36,6 +38,7 @@ export default function SelectDropdown({
 
   return (
     <Dropdown
+      label={label}
       trigger={
         <div className="w-full" onClick={() => setIsOpen((prev) => !prev)}>
           <Trigger selectedOption={selectedOption} isOpen={isOpen} />
