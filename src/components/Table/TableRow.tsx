@@ -13,10 +13,11 @@ export function TableHeader() {
 }
 
 export function TableRowItem({ application }: { application: Application }) {
-  const storeName = '라면집';
+  const { name: storeName } = application.item.shop.item;
+  const { hourlyPay } = application.item.notice.item;
+  const status = application.item.status;
+
   const time = '2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ ';
-  const hourlyPay = '12,500';
-  const status = 'pending';
   return (
     <li className="md:text-md-rg border-gray20 flex h-11.5 w-full items-center justify-between border-b-1 text-sm md:h-16">
       <p className="w-[189px] px-3 md:w-57">{storeName}</p>

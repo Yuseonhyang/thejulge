@@ -1,6 +1,6 @@
 import { UserType } from '../../../types/userType';
 
-type ApplicationStatus = 'pending' | 'accepted' | 'rejected' | 'canceled';
+export type ApplicationStatus = 'pending' | 'accepted' | 'rejected' | 'canceled';
 
 export interface ApplicationsData {
   count: number;
