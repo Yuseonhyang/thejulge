@@ -12,8 +12,8 @@ export default function Table({ data }: Props) {
     <ol className="border-gray20 flex flex-col items-center rounded-xl border-1">
       <TableHeader />
       {items.length > 0 &&
-        items.map(() => {
-          return <TableRowItem />;
+        items.map((item) => {
+          return <TableRowItem application={item} />;
         })}
 
       <div className="flex h-14 items-center md:h-16">

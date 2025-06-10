@@ -1,3 +1,4 @@
+import { Application } from '../../pages/noticeIdPage/types/applications';
 import Badge from './Badge';
 
 export function TableHeader() {
@@ -11,7 +12,7 @@ export function TableHeader() {
   );
 }
 
-export function TableRowItem() {
+export function TableRowItem({ application }: { application: Application }) {
   const storeName = '라면집';
   const time = '2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ 2023.01.02~~~~ ';
   const hourlyPay = '12,500';
