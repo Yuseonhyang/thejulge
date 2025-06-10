@@ -31,7 +31,7 @@ function App() {
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
             <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
             <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
-            <Route path="mystore/notices/:noticeId" element={<NoticePage />} />
+            <Route path="notices/:noticeId" element={<NoticePage />} />
           </Route>
         </Routes>
       </BrowserRouter>
