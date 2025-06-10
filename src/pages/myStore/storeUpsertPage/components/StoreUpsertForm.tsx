@@ -13,9 +13,9 @@ interface Props {
   mode: UpsertMode;
 }
 export default function StoreUpsertForm({ mode }: Props) {
-  const { data, isLoading, status } = useUserInfoQuery();
+  const { data, isLoading } = useUserInfoQuery();
   const [storeData, setStoreData] = useState(INITIAL_UPSERT_STORE);
-  const shop = data?.data.item.shop.item;
+  const shop = data?.item.shop.item;
 
   const buttonText = mode === 'register' ? SHOP_BUTTON.registerStore : SHOP_BUTTON.editStore;
 
@@ -25,7 +25,7 @@ export default function StoreUpsertForm({ mode }: Props) {
     if (mode === 'edit' && shop) {
       setStoreData(shop);
     }
-  }, [status, mode]);
+  }, [data, mode]);
 
   if (isLoading) return <div>로딩중 ...</div>;
   return (
