@@ -1,1 +1,188 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer {
+  html {
+    height: 100%;
+  }
+  body {
+    font-family:
+      'Pretendard Variable',
+      Spoqa Han Sans Neo,
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      'Helvetica Neue',
+      'Segoe UI',
+      'Apple SD Gothic Neo',
+      'Noto Sans KR',
+      'Malgun Gothic',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      sans-serif;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    height: 100%;
+    font-size: var(--text-lg-rg);
+  }
+  button {
+    cursor: pointer;
+  }
+}
+@theme {
+  --color-*: initial;
+
+  --color-black: #111322;
+  --color-gray50: #7d7986;
+  --color-gray40: #a4a1aa;
+  --color-gray30: #cbc9cf;
+  --color-gray20: #e5e4e7;
+  --color-gray10: #f2f2f3;
+  --color-gray5: #fafafa;
+  --color-white: #ffffff;
+
+  --color-red40: #ff4040;
+  --color-red30: #ff8d72;
+  --color-red20: #ffaf9b;
+  --color-red10: #ffebe7;
+
+  --color-blue20: #0080ff;
+  --color-blue10: #cce6ff;
+
+  --color-green20: #20a81e;
+  --color-green10: #d4f7d4;
+
+  --color-kakao: #fee500;
+
+  --color-primary: #ea3c12;
+}
+
+@theme {
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 3rem;
+  --text-5xl--font-weight: 500;
+
+  --text-4xl-bold: 2rem;
+  --text-4xl-bold--line-height: 2.375rem;
+  --text-4xl-bold--font-weight: 700;
+
+  --text-4xl-semi: 2rem;
+  --text-4xl-semi--line-height: 2.375rem;
+  --text-4xl-semi--font-weight: 600;
+
+  --text-3xl-bold: 1.75rem;
+  --text-3xl-bold--line-height: 1.75rem;
+  --text-3xl-bold--font-weight: 700;
+
+  --text-2xl-bold: 1.5rem;
+  --text-2xl-bold--line-height: 1.75rem;
+  --text-2xl-bold--font-weight: 700;
+
+  --text-2xl-semi: 1.5rem;
+  --text-2xl-semi--line-height: 1.75rem;
+  --text-2xl-semi--font-weight: 600;
+
+  --text-2xl-md: 1.5rem;
+  --text-2xl-md--line-height: 1.75rem;
+  --text-2xl-md--font-weight: 500;
+
+  --text-2xl-rg: 1.5rem;
+  --text-2xl-rg--line-height: 1.75rem;
+  --text-2xl-rg--font-weight: 400;
+
+  --text-xl-bold: 1.25rem;
+  --text-xl-bold--line-height: 1.5rem;
+  --text-xl-bold--font-weight: 700;
+
+  --text-xl-semi: 1.25rem;
+  --text-xl-semi--line-height: 1.5rem;
+  --text-xl-semi--font-weight: 600;
+
+  --text-xl-md: 1.25rem;
+  --text-xl-md--line-height: 1.5rem;
+  --text-xl-md--font-weight: 500;
+
+  --text-xl-rg: 1.25rem;
+  --text-xl-rg--line-height: 1.5rem;
+  --text-xl-rg--font-weight: 400;
+
+  --text-2lg-bold: 1.125rem;
+  --text-2lg-bold--line-height: 1.3125rem;
+  --text-2lg-bold--font-weight: 700;
+
+  --text-2lg-semi: 1.125rem;
+  --text-2lg-semi--line-height: 1.3125rem;
+  --text-2lg-semi--font-weight: 600;
+
+  --text-2lg-md: 1.125rem;
+  --text-2lg-md--line-height: 1.625rem;
+  --text-2lg-md--font-weight: 500;
+
+  --text-2lg-rg: 1.125rem;
+  --text-2lg-rg--line-height: 1.3125rem;
+  --text-2lg-rg--font-weight: 400;
+
+  /* 16px lineheight*/
+  --text-lg-bold: 1rem;
+  --text-lg-bold--line-height: 1.625rem;
+  --text-lg-bold--font-weight: 700;
+
+  --text-lg-semi: 1rem;
+  --text-lg-semi--line-height: 1.625rem;
+  --text-lg-semi--font-weight: 600;
+
+  --text-lg-md: 1rem;
+  --text-lg-md--line-height: 1.625rem;
+  --text-lg-md--font-weight: 500;
+
+  --text-lg-rg: 1rem;
+  --text-lg-rg--line-height: 1.625rem;
+  --text-lg-rg--font-weight: 400;
+
+  /* 14px lineheight*/
+  --text-md-bold: 0.875rem;
+  --text-md-bold--line-height: : 1.375rem;
+  --text-md-bold--font-weight: 700;
+
+  --text-md-semi: 0.875rem;
+  --text-md-semi--line-height: 1.375rem;
+  --text-md-semi--font-weight: 600;
+
+  --text-md-md: 0.875rem;
+  --text-md-md--line-height: 1.375rem;
+  --text-md-md--font-weight: 500;
+
+  --text-md-rg: 0.875rem;
+  --text-md-rg--line-height: 1.375rem;
+  --text-md-rg--font-weight: 400;
+
+  /* 13px lineheight */
+  --text-sm-semi: 0.8125rem;
+  --text-sm-semi--line-height: 1rem;
+  --text-sm-semi--font-weight: 600;
+
+  --text-sm-: 0.8125rem;
+  --text-sm-md--line-height: 1rem;
+  --text-sm-md--font-weight: 500;
+
+  --text-sm-md: 0.8125rem;
+  --text-sm-md--line-height: 1rem;
+  --text-sm-md--font-weight: 500;
+
+  /* 12px */
+  --text-xs-semi: 0.75rem;
+  --text-xs-semi--line-height: 1rem;
+  --text-xs-semi--font-weight: 600;
+
+  --text-xs-md: 0.75rem;
+  --text-xs-md--line-height: 1rem;
+  --text-xs-md--font-weight: 500;
+
+  --text-xs-rg: 0.75rem;
+  --text-xs-rg--line-height: 1rem;
+  --text-xs-rg--font-weight: 400;
+}
