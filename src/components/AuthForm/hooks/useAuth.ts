@@ -25,7 +25,7 @@ export default function useAuth(type: useAuthType) {
       });
       localStorage.setItem('accessToken', data.item.token);
 
-      if (data.item.user.item.type === 'employee') return navigate(PATHS.MYPAGE);
+      if (data.item.user.item.type === 'employee') return navigate(PATHS.MYPROFILE);
       if (data.item.user.item.type === 'employer') return navigate(PATHS.MYSTORE);
     } catch (err) {
       console.error(err);

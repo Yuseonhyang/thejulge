@@ -10,7 +10,7 @@ export default function MyPage() {
       </section>
       <section className="flex flex-col gap-4 md:gap-8">
         <h1 className="text-3xl-bold">신청내역</h1>
-        <Table />
+        <Table data={undefined} />
       </section>
     </div>
   );
