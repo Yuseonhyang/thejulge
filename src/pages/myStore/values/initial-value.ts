@@ -33,4 +33,5 @@ export const INITIAL_NOTICE: Notice = {
   workhour: 0,
   description: '',
   closed: false,
+  shop: INITIAL_UPSERT_STORE,
 };
