@@ -12,6 +12,4 @@ export const PATHS = {
 
   NOTICE_REGISTER: '/mystore/notice/register',
   NOTICE_EDIT: '/mystore/notice/edit',
-
-  NOTICE_DETAIL: '/mystore/notices',
 };

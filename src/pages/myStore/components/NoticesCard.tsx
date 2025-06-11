@@ -18,7 +18,7 @@ export default function NoticesCard({ notice, name, address1, image }: NoticesCa
   return (
     <div
       className="border-gray20 flex w-full flex-col gap-3 rounded-xl border-1 bg-white p-3 md:gap-5 md:p-4"
-      onClick={() => navigate(`${PATHS.NOTICE_DETAIL}/${id}`)}
+      onClick={() => navigate(`${PATHS.NOTICES}/${id}`)}
     >
       <div
         className={clsx(

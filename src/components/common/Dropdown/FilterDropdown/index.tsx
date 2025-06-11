@@ -4,7 +4,6 @@ import { defaultContainerStyle } from '../style';
 import Button from '../../Button';
 import { FILTER_BUTTON } from '../../../../constants/button';
 import { useState } from 'react';
-import InputField from '../../InputField';
 import XIcon from '../../../../assets/icons/XIcon';
 import { SelectedFilterType } from './types';
 import { INITIAL_FILTER } from './value/initial-value';

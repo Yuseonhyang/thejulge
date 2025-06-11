@@ -13,10 +13,8 @@ interface Props {
 export default function NoticeUpsertForm({ mode, shopId }: Props) {
   const buttonText = mode === 'register' ? NOTICE_BUTTON.registerNotice : NOTICE_BUTTON.editNotice;
 
-  const { formData, changeUpsertForm, submitUpsertForm } = useNoticeUpsertForm(
-    INITIAL_UPSERT_NOTICE,
-    mode
-  );
+  const { formData, changeUpsertForm, submitUpsertForm } =
+    useNoticeUpsertForm(INITIAL_UPSERT_NOTICE);
 
   return (
     <form

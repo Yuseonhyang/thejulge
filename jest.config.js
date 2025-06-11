@@ -1,4 +1,3 @@
-// jest.config.ts
 export default {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
