@@ -1,8 +1,20 @@
+import { useEffect, useState } from 'react';
 import AllNotices from './components/AllNotices';
 import NoticesFilters from './components/NoticesFilters';
 import RecommendedNotices from './components/RecommendedNotices';
+import { getNoticeList } from '../../api/notices';
 
 export default function NoticeListPage() {
+  const [allNotices, setAllNotices] = useState();
+  const fetchAllNotices = async () => {
+    const data = await getNoticeList();
+    setAllNotices(data);
+  };
+
+  useEffect(() => {
+    fetchAllNotices();
+  }, []);
+
   return (
     <div className="flex w-full flex-col gap-20">
       <section className="flex flex-col gap-4 md:gap-8">
