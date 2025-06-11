@@ -9,6 +9,7 @@ import SignupPage from './pages/signup';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import StoreUpsertPage from './pages/myStore/storeUpsertPage';
 import NoticePage from './pages/noticeIdPage';
+import NoticeListPage from './pages/noticeListPage';
 import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
 import NoticeSearchPage from './pages/noticeSearchPage';
 
@@ -26,13 +27,15 @@ function App() {
 
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="mypage" element={<MyPage />} />
+            <Route path="myprofile" element={<MyPage />} />
             <Route path="mystore" element={<MyStorePage />} />
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
             <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
             <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
             <Route path="notices/:noticeId" element={<NoticePage />} />
+
+            <Route path="notices" element={<NoticeListPage />} />
             <Route path="notices/search" element={<NoticeSearchPage />} />
           </Route>
         </Routes>

@@ -1,3 +1,5 @@
+import { Shop } from './store';
+
 export interface Notice {
   id: string;
   hourlyPay: number;
@@ -5,6 +7,7 @@ export interface Notice {
   workhour: number;
   description: string;
   closed: boolean;
+  shop: Shop;
 }
 
 export interface Notices {

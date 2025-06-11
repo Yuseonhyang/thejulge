@@ -1,6 +1,10 @@
 jest.resetModules();
 jest.mock('axios');
 
+jest.mock('../../lib/instance.ts', () => ({
+  BASE_URL: 'https://mock-api.test',
+}));
+
 import axios, { AxiosInstance } from 'axios';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 

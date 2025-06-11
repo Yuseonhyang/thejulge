@@ -1,32 +1,27 @@
-import { SelectedFilterType } from '../types';
 import InputField from '../../../InputField';
 
 interface Props {
-  filter: SelectedFilterType;
+  hourlyPayGte: number;
   filterUpdate: (key: string, value: any) => void;
 }
-export default function HourlyPaySection({ filter, filterUpdate }: Props) {
+export default function HourlyPaySection({ hourlyPayGte, filterUpdate }: Props) {
   return (
-    <section className="flex w-full flex-col gap-3">
-      <label>금액</label>
-      <div className="flex items-center gap-3">
-        <div className="w-[169px]">
-          <InputField
-            inputType="input"
-            placeholder="입력"
-            gapSize="12"
-            value={filter.hourlyPayGte}
-            type="number"
-            step="100"
-            min="0"
-            name="hourlyPayGte"
-            onChange={(e) => {
-              filterUpdate('hourlyPayGte', e.currentTarget.value);
-            }}
-          />
-        </div>
-        <p>이상부터</p>
-      </div>
+    <section className="flex w-full items-center gap-3">
+      <InputField
+        inputType="input"
+        placeholder="입력"
+        gapsize="12"
+        value={hourlyPayGte}
+        type="number"
+        step="100"
+        min="0"
+        name="hourlyPayGte"
+        onChange={(e) => {
+          filterUpdate('hourlyPayGte', e.currentTarget.value);
+        }}
+        label="금액"
+        rightSlot={<span className="text-gray30">원 이상부터</span>}
+      />
     </section>
   );
 }
