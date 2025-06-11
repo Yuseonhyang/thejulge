@@ -2,7 +2,7 @@ interface Props {
   width: string;
   height: string;
   className: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 export default function XIcon({ ...props }: Props) {
   return (

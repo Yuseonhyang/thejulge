@@ -25,7 +25,7 @@ export default function AllNotices({ notices }: Props) {
             );
           })}
       </div>
-      <Pagination />
+      <Pagination count={notices.count} hasNext={notices.hasNext} />
     </div>
   );
 }
