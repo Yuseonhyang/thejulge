@@ -13,7 +13,7 @@ export default function MyStorePage() {
   const [notices, setNotices] = useState<Notices>(INITIAL_NOTICES);
   const [shopId, setShopId] = useState('');
   const [shop, setShop] = useState<Shop>();
-  const { data, isLoading } = useUserInfoQuery();
+  const { data } = useUserInfoQuery();
 
   const fetchNotices = async (shopId: string) => {
     if (!shopId) return;

@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
   (response) => response,
-  async (error) => {
+  async () => {
     // const originalRequest = error.config;
 
     const accessToken = localStorage.getItem('accessToken');

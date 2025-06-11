@@ -2,10 +2,9 @@ import { useState } from 'react';
 import axiosClient from '../../../../lib/instance';
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../../../constants/path';
-import { UpsertMode } from '../../../../types/upsertMode';
 import { NoticeUpsertType } from '../../types/notice';
 
-export default function useNoticeUpsertForm(initialNotice: NoticeUpsertType, mode: UpsertMode) {
+export default function useNoticeUpsertForm(initialNotice: NoticeUpsertType) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState(initialNotice);
 

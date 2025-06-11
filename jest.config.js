@@ -1,4 +1,3 @@
-// jest.config.ts
 export default {
   preset: 'ts-jest/presets/js-with-ts',
 
