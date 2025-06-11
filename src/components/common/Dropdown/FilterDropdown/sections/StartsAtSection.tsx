@@ -1,11 +1,10 @@
-import { SelectedFilterType } from '../types';
 import InputField from '../../../InputField';
 
 interface Props {
-  filter: SelectedFilterType;
+  startsAtGte: Date;
   filterUpdate: (key: string, value: any) => void;
 }
-export default function StartsAtSection({ filter, filterUpdate }: Props) {
+export default function StartsAtSection({ startsAtGte, filterUpdate }: Props) {
   return (
     <section className="flex w-full">
       <InputField
@@ -13,7 +12,7 @@ export default function StartsAtSection({ filter, filterUpdate }: Props) {
         label="시작일"
         placeholder="입력"
         gapSize="12"
-        value={String(filter.startsAtGte)}
+        value={String(startsAtGte)}
         type="date"
         name="startsAtGte"
         onChange={(e) => {

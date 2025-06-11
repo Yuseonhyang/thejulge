@@ -4,6 +4,8 @@ import NoticesFilters from './components/NoticesFilters';
 import RecommendedNotices from './components/RecommendedNotices';
 import { getNoticeList } from '../../api/notices';
 import { Notices } from '../myStore/types/notice';
+import { SelectedFilterType } from '../../components/common/Dropdown/FilterDropdown/types';
+import { INITIAL_FILTER } from '../../components/common/Dropdown/FilterDropdown/value/initial-value';
 
 /** @todo
  * 맞춤 공고는 추후에 추가 예정
@@ -13,15 +15,23 @@ import { Notices } from '../myStore/types/notice';
 
 export default function NoticeListPage() {
   const [allNotices, setAllNotices] = useState<Notices>();
+  const [noticeListFilter, setNoticeListFilter] = useState({
+    sortOption: 'time',
+    filters: INITIAL_FILTER,
+  });
 
-  const fetchAllNotices = async (sortOption?: string) => {
-    const data = await getNoticeList(sortOption);
+  const changeNoticeListFilter = (key: string, value: string | SelectedFilterType) => {
+    setNoticeListFilter((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const fetchAllNotices = async () => {
+    const data = await getNoticeList(noticeListFilter);
     setAllNotices(data);
   };
 
   useEffect(() => {
     fetchAllNotices();
-  }, []);
+  }, [noticeListFilter]);
 
   if (!allNotices) return;
 
@@ -36,7 +46,10 @@ export default function NoticeListPage() {
           <h1 className="text-3xl-bold">전체 공고</h1>
           <NoticesFilters
             onSelectSort={(sortOption: string) => {
-              fetchAllNotices(sortOption);
+              changeNoticeListFilter('sortOption', sortOption);
+            }}
+            onSelectFilter={(filters) => {
+              changeNoticeListFilter('filters', filters);
             }}
           />
         </div>

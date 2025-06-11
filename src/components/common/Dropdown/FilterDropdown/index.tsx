@@ -14,15 +14,15 @@ import HourlyPaySection from './sections/HourlyPaySection';
 interface Props {
   placement?: string;
   containerWidth?: string;
-  onSelectFilter: (filter: SelectedFilterType) => void;
+  onSelectFilter: (filters: SelectedFilterType) => void;
   selectedFilter: SelectedFilterType;
 }
 
 export default function FilterDropdown({
+  placement,
   containerWidth = '375',
   onSelectFilter,
   selectedFilter,
-  ...props
 }: Props) {
   const [filterCount, setFilterCount] = useState(0);
   const [filter, setFilter] = useState<SelectedFilterType>(selectedFilter);
@@ -33,11 +33,20 @@ export default function FilterDropdown({
   };
 
   const filterUpdate = (key: string, value: any) => {
-    setFilter((prev) => ({ ...prev, [key]: value }));
+    if (key === 'districts') {
+      setFilter((prev) => ({
+        ...prev,
+        districts: [...prev.districts, value],
+      }));
+    } else {
+      setFilter((prev) => ({ ...prev, [key]: value }));
+    }
   };
 
   const resetFilter = () => {
+    setFilterCount(0);
     setFilter(INITIAL_FILTER);
+    onSelectFilter(INITIAL_FILTER);
   };
 
   return (
@@ -50,30 +59,44 @@ export default function FilterDropdown({
         </div>
       }
     >
-      {({ close: _unused }) => (
+      {({ close }) => (
         <div
           className={clsx(
             defaultContainerStyle,
-            props.placement,
+            placement,
             'flex h-fit w-[375px] flex-col gap-6 bg-white px-3 py-6 md:max-h-211 md:w-[390px]'
           )}
           style={{ width: `${containerWidth}px` }}
         >
           <div className="flex w-full justify-between">
             <h2 className="text-xl-bold">{FILTER_BUTTON.filter}</h2>
-            <XIcon width="24" height="24" className="bg-black" />
+            <XIcon width="24" height="24" className="bg-black" onClick={close} />
           </div>
           <div className="flex flex-col gap-6">
-            <DistrictSection filter={filter} filterUpdate={filterUpdate} />
+            <DistrictSection districts={filter.districts} filterUpdate={filterUpdate} />
             <div className="bg-gray10 h-0.5 w-full" />
-            <StartsAtSection filter={filter} filterUpdate={filterUpdate} />
+            <StartsAtSection startsAtGte={filter.startsAtGte} filterUpdate={filterUpdate} />
             <div className="bg-gray10 h-0.5 w-full" />
-            <HourlyPaySection filter={filter} filterUpdate={filterUpdate} />
+            <HourlyPaySection hourlyPayGte={filter.hourlyPayGte} filterUpdate={filterUpdate} />
             <section className="flex w-full items-center gap-2">
-              <Button size="medium" variant="secondary-red" onClick={resetFilter}>
+              <Button
+                size="medium"
+                variant="secondary-red"
+                onClick={() => {
+                  resetFilter();
+                  close();
+                }}
+              >
                 {FILTER_BUTTON.reset}
               </Button>
-              <Button size="medium" variant="primary" onClick={applyFilter}>
+              <Button
+                size="medium"
+                variant="primary"
+                onClick={() => {
+                  applyFilter();
+                  close();
+                }}
+              >
                 {FILTER_BUTTON.apply}
               </Button>
             </section>

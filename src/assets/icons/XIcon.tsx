@@ -2,6 +2,7 @@ interface Props {
   width: string;
   height: string;
   className: string;
+  onClick: () => void;
 }
 export default function XIcon({ ...props }: Props) {
   return (
@@ -11,6 +12,7 @@ export default function XIcon({ ...props }: Props) {
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={props.onClick}
     >
       <g clip-path="url(#clip0_16355_6276)">
         <path
