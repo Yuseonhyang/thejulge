@@ -6,6 +6,7 @@ export const PATHS = {
   MYSTORE: '/mystore',
   MYPROFILE: '/myprofile',
   NOTICES: '/notices',
+  SEARCH_NOTICES: '/notices/search',
 
   STORE_REGISTER: '/mystore/register',
   STORE_EDIT: '/mystore/edit',

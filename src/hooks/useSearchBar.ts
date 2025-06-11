@@ -13,7 +13,7 @@ export default function useHeaderHandler() {
 
   const handleSubmitKeyword = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate(`${PATHS.NOTICES}?search=${keyword}`);
+    navigate(`${PATHS.SEARCH_NOTICES}?search=${keyword}`);
   };
 
   return { handleChangeKeyword, keyword, handleSubmitKeyword };
