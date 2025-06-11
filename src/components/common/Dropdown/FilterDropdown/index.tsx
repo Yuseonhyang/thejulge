@@ -41,6 +41,7 @@ export default function FilterDropdown({
     } else {
       setFilter((prev) => ({ ...prev, [key]: value }));
     }
+    setFilterCount((prev) => ++prev);
   };
 
   const resetFilter = () => {
@@ -52,9 +53,9 @@ export default function FilterDropdown({
   return (
     <Dropdown
       trigger={
-        <div className="h-[30px] w-fit">
-          <Button size="parent-dependent" variant="primary" className="px-3 py-1.5">
-            {`${FILTER_BUTTON.filter} (${filterCount})`}
+        <div className="h-full w-fit">
+          <Button size="parent-dependent" variant="primary">
+            <p className="px-3 py-1.5">{`${FILTER_BUTTON.filter} (${filterCount})`}</p>
           </Button>
         </div>
       }

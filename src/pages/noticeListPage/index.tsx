@@ -42,7 +42,7 @@ export default function NoticeListPage() {
         <RecommendedNotices />
       </section>
       <section className="flex flex-col gap-4 md:gap-8">
-        <div className="flex justify-between">
+        <div className="flex flex-col justify-between gap-4 md:flex-row">
           <h1 className="text-3xl-bold">전체 공고</h1>
           <NoticesFilters
             onSelectSort={(sortOption: string) => {
