@@ -22,10 +22,8 @@ export default function AuthForm({ type }: Props) {
     <section className="flex w-full flex-col items-center gap-5">
       <form
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-          {
-            e.preventDefault();
-            type === 'login' ? loginUser() : signupUser();
-          }
+          e.preventDefault();
+          type === 'login' ? loginUser() : signupUser();
         }}
         className="flex w-full flex-col gap-7"
       >

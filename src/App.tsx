@@ -26,7 +26,7 @@ function App() {
 
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="mypage" element={<MyPage />} />
+            <Route path="myprofile" element={<MyPage />} />
             <Route path="mystore" element={<MyStorePage />} />
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
