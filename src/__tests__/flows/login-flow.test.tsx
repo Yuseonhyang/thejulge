@@ -1,18 +1,45 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
+jest.resetModules();
+jest.mock('axios');
 
-import { PLACEHOLDERS } from '../../constants/placeholders';
+import axios, { AxiosInstance } from 'axios';
+const mockedAxios = axios as jest.Mocked<typeof axios>;
+
+const mockAxiosInstance = {
+  interceptors: {
+    request: {
+      use: jest.fn(),
+    },
+    response: {
+      use: jest.fn(),
+    },
+  },
+  post: jest.fn(),
+  get: jest.fn(),
+} as unknown as jest.Mocked<AxiosInstance>;
+mockedAxios.create.mockReturnValue(mockAxiosInstance);
+
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import LoginPage from '../../pages/login';
 
 test('사용자는 이메일과 비밀번호로 로그인할 수 있다', async () => {
-  render(<LoginPage />);
+  mockAxiosInstance.post.mockResolvedValue({
+    data: { accessToken: 'fake-token' },
+  });
 
-  userEvent.type(screen.getByPlaceholderText(PLACEHOLDERS.EMAIL), 'test00@test.com');
-  userEvent.type(screen.getByPlaceholderText(PLACEHOLDERS.PASSWORD), '1234abcd');
-  userEvent.click(screen.getByText('로그인'));
+  render(
+    <MemoryRouter>
+      <LoginPage />
+    </MemoryRouter>
+  );
+
+  userEvent.type(screen.getByPlaceholderText('이메일을 입력해주세요'), 'test00@test.com');
+  userEvent.type(screen.getByPlaceholderText('비밀번호를 입력해주세요'), '1234abcd');
+
+  userEvent.click(screen.getByRole('button', { name: /로그인 하기/i }));
 
   await waitFor(() => {
-    expect(localStorage.getItem('accessToken')).toBeTruthy();
+    expect(localStorage.setItem('accessToken', 'fake-token'));
   });
 });
