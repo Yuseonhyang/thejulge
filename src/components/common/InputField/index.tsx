@@ -11,7 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaEleme
   inputType: 'textarea' | 'image' | 'input' | 'search';
 
   label?: string;
-  gapSize?: string;
+  gapsize?: string;
   leftSlot?: ReactNode;
   rightSlot?: ReactNode;
 
@@ -59,7 +59,7 @@ export default function InputField({
   return (
     <div
       className={clsx('flex h-full w-full flex-col items-start')}
-      style={{ gap: `${props.gapSize}px` }}
+      style={{ gap: `${props.gapsize}px` }}
     >
       {label && <label className={clsx(defaultLabelStyle)}>{label}</label>}
       <div className="flex h-full w-full flex-col gap-2">

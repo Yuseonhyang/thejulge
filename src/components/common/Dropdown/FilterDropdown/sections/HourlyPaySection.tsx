@@ -10,7 +10,7 @@ export default function HourlyPaySection({ hourlyPayGte, filterUpdate }: Props) 
       <InputField
         inputType="input"
         placeholder="입력"
-        gapSize="12"
+        gapsize="12"
         value={hourlyPayGte}
         type="number"
         step="100"

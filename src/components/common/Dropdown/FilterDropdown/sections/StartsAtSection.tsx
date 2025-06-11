@@ -11,7 +11,7 @@ export default function StartsAtSection({ startsAtGte, filterUpdate }: Props) {
         inputType="input"
         label="시작일"
         placeholder="입력"
-        gapSize="12"
+        gapsize="12"
         value={String(startsAtGte)}
         type="date"
         name="startsAtGte"
