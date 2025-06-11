@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PATHS } from '../constants/path';
 
-const BASE_URL = import.meta.env.VITE_PUBLIC_API_URL;
+const BASE_URL = process.env.VITE_PUBLIC_API_URL;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use((config) => {
 
 axiosInstance.interceptors.response.use(
   (response) => response,
-  async (error) => {
+  async () => {
     // const originalRequest = error.config;
 
     const accessToken = localStorage.getItem('accessToken');

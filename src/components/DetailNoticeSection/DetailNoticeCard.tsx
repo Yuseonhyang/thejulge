@@ -17,7 +17,7 @@ export default function DetailNoticeCard({
   storeDescription,
 }: NoticesCardProps) {
   const navigate = useNavigate();
-  const { hourlyPay, workhour, id } = notice;
+  const { hourlyPay, workhour } = notice;
   const wageComparedToPrev = '기존 시급보다 50%';
 
   return (

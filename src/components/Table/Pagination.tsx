@@ -2,8 +2,11 @@ import clsx from 'clsx';
 import PaginationArrow from '../../assets/icons/PaginationArrow';
 import usePagination from '../../pages/myPage/_myPage/hooks/usePagination';
 
-export default function Pagination({}) {
-  const totalPage = 21;
+interface Props {
+  hasNext: boolean;
+  count: number;
+}
+export default function Pagination({ hasNext, count: totalPage }: Props) {
   const { visiblePages, selectedNumber, changePage, clickNavigationButton } =
     usePagination(totalPage);
 
@@ -37,7 +40,7 @@ export default function Pagination({}) {
           onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
             clickNavigationButton(e.currentTarget.value)
           }
-          disabled={selectedNumber === totalPage}
+          disabled={hasNext}
         >
           <PaginationArrow type="next" navAvailability={selectedNumber !== totalPage} />
         </button>

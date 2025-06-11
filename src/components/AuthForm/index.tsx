@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import UserTypeCheckIcon from '../../assets/icons/UserTypeCheckIcon';
 import InputField from '../../components/common/InputField';
 import { AUTH_BUTTON } from '../../constants/button';

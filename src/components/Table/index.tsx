@@ -1,15 +1,23 @@
+import { ApplicationsData } from '../../pages/noticeIdPage/types/applications';
 import Pagination from './Pagination';
 import { TableRowItem, TableHeader } from './TableRow';
 
-export default function Table() {
+interface Props {
+  data: ApplicationsData | undefined;
+}
+export default function Table({ data }: Props) {
+  if (!data) return;
+  const { count, hasNext, items } = data;
   return (
     <ol className="border-gray20 flex flex-col items-center rounded-xl border-1">
       <TableHeader />
-      <TableRowItem />
-      <TableRowItem />
-      <TableRowItem />
+      {items.length > 0 &&
+        items.map((item) => {
+          return <TableRowItem application={item} />;
+        })}
+
       <div className="flex h-14 items-center md:h-16">
-        <Pagination />
+        <Pagination hasNext={hasNext} count={count} />
       </div>
     </ol>
   );
