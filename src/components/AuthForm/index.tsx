@@ -53,7 +53,7 @@ export default function AuthForm({ type }: Props) {
               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
                 handleChangeAuthForm('confirmPassword', e.target.value)
               }
-              placeholder={PLACEHOLDERS.default}
+              placeholder={PLACEHOLDERS.CONFIRM_PASSWORD}
             />
             <SignupUserTypeField onChange={(value) => handleChangeAuthForm('type', value)} />
           </>
