@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import AllNotices from './components/AllNotices';
-import NoticesFilters from './components/NoticesFilters';
 import RecommendedNotices from './components/RecommendedNotices';
 import { getNoticeList } from '../../api/notices';
 import { Notices } from '../myStore/types/notice';
 import { SelectedFilterType } from '../../components/common/Dropdown/FilterDropdown/types';
 import { INITIAL_FILTER } from '../../components/common/Dropdown/FilterDropdown/value/initial-value';
+import NoticesFilters from '../../components/NoticesFilters';
 
 /** @todo
  * 맞춤 공고는 추후에 추가 예정

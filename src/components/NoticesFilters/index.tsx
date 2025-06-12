@@ -1,8 +1,8 @@
-import FilterDropdown from '../../../components/common/Dropdown/FilterDropdown';
-import { SelectedFilterType } from '../../../components/common/Dropdown/FilterDropdown/types';
-import { INITIAL_FILTER } from '../../../components/common/Dropdown/FilterDropdown/value/initial-value';
-import SortDropdown from '../../../components/common/Dropdown/SortDropdown';
-import { SORT_OPTIONS } from '../../../constants/dropdown';
+import { SORT_OPTIONS } from '../../constants/dropdown';
+import FilterDropdown from '../common/Dropdown/FilterDropdown';
+import { SelectedFilterType } from '../common/Dropdown/FilterDropdown/types';
+import { INITIAL_FILTER } from '../common/Dropdown/FilterDropdown/value/initial-value';
+import SortDropdown from '../common/Dropdown/SortDropdown';
 
 interface Props {
   onSelectSort: (sortOption: string) => void;

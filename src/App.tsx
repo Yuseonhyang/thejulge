@@ -11,6 +11,7 @@ import StoreUpsertPage from './pages/myStore/storeUpsertPage';
 import NoticePage from './pages/noticeIdPage';
 import NoticeListPage from './pages/noticeListPage';
 import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
+import NoticeSearchPage from './pages/noticeSearchPage';
 
 const queryClient = new QueryClient();
 
@@ -32,9 +33,10 @@ function App() {
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
             <Route path="mystore/notice/register" element={<NoticeUpsertPage />} />
             <Route path="mystore/notice/edit" element={<NoticeUpsertPage />} />
-            <Route path="mystore/notices/:noticeId" element={<NoticePage />} />
+            <Route path="notices/:noticeId" element={<NoticePage />} />
 
             <Route path="notices" element={<NoticeListPage />} />
+            <Route path="notices/search" element={<NoticeSearchPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
