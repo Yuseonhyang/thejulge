@@ -5,6 +5,7 @@ import { Notices } from '../myStore/types/notice';
 import { getNoticeList } from '../../api/notices';
 import { INITIAL_FILTER } from '../../components/common/Dropdown/FilterDropdown/value/initial-value';
 import NoticesFilters from '../../components/NoticesFilters';
+import { SelectedFilterType } from '../../components/common/Dropdown/FilterDropdown/types';
 
 export default function NoticeSearchPage() {
   const [searchParams] = useSearchParams();
@@ -19,12 +20,15 @@ export default function NoticeSearchPage() {
   const fetchNotices = async () => {
     const data = await getNoticeList(noticeListFilter, keyword);
     setSearchNotices(data);
-    console.log(data);
   };
 
   useEffect(() => {
     fetchNotices();
-  }, []);
+  }, [noticeListFilter, keyword]);
+
+  const changeNoticeListFilter = (key: string, value: string | SelectedFilterType) => {
+    setNoticeListFilter((prev) => ({ ...prev, [key]: value }));
+  };
 
   if (!searchNotices) return;
 
@@ -34,7 +38,14 @@ export default function NoticeSearchPage() {
         <h1 className="text-3xl-bold">
           <span className="text-primary">{keyword}</span>에 대한 공고 목록
         </h1>
-        <NoticesFilters onSelectFilter={() => {}} onSelectSort={() => {}} />
+        <NoticesFilters
+          onSelectSort={(sortOption: string) => {
+            changeNoticeListFilter('sortOption', sortOption);
+          }}
+          onSelectFilter={(filters: SelectedFilterType) => {
+            changeNoticeListFilter('filters', filters);
+          }}
+        />
       </div>
       <section className="flex flex-col gap-4 md:gap-8">
         <div className="grid grid-cols-2 lg:grid-cols-3">{}</div>
