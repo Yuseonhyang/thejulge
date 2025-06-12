@@ -34,7 +34,7 @@ export default function NoticeSearchPage() {
   if (!searchNotices) return;
 
   return (
-    <div className="flex flex-col">
+    <div className="lg:gap- flex flex-col gap-4 md:gap-8">
       <div className="flex flex-col justify-between gap-2 md:flex-row">
         <h1 className="text-3xl-bold">
           <span className="text-primary">{keyword}</span>에 대한 공고 목록
