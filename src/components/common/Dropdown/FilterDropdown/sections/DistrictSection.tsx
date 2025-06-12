@@ -1,18 +1,14 @@
-import { useState } from 'react';
 import { SEOUL_DISTRICTS } from '../value/seoul-districts-data';
-import { SelectedFilterType } from '../types';
 import DistrictsTags from '../DistrictsTags';
 
 interface Props {
-  filter: SelectedFilterType;
+  districts: string[];
   filterUpdate: (key: string, value: any) => void;
 }
-export default function DistrictSection({ filter, filterUpdate }: Props) {
-  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(filter.districts);
-
+export default function DistrictSection({ districts, filterUpdate }: Props) {
   const deleteDistrictTag = (removingDistrict: string) => {
-    const filteredDistricts = selectedDistricts.filter((district) => district !== removingDistrict);
-    setSelectedDistricts(filteredDistricts);
+    const filteredDistricts = districts.filter((district) => district !== removingDistrict);
+    filterUpdate('districts', filteredDistricts);
   };
   return (
     <section className="flex w-full flex-col gap-3">
@@ -23,7 +19,6 @@ export default function DistrictSection({ filter, filterUpdate }: Props) {
             <p
               key={district}
               onClick={() => {
-                setSelectedDistricts((prev) => [...prev, district]);
                 filterUpdate('districts', district);
               }}
             >
@@ -32,8 +27,8 @@ export default function DistrictSection({ filter, filterUpdate }: Props) {
           );
         })}
       </div>
-      {selectedDistricts.length > 0 && (
-        <DistrictsTags selectedDistricts={selectedDistricts} onDeleteTag={deleteDistrictTag} />
+      {districts.length > 0 && (
+        <DistrictsTags selectedDistricts={districts} onDeleteTag={deleteDistrictTag} />
       )}
     </section>
   );

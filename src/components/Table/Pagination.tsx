@@ -27,6 +27,7 @@ export default function Pagination({ hasNext, count: totalPage }: Props) {
         {visiblePages.map((pageNumber) => {
           return (
             <NumberButton
+              key={pageNumber}
               number={pageNumber}
               selectedNumber={selectedNumber}
               onClick={(page: number) => changePage(page)}
