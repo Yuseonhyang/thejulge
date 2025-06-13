@@ -6,19 +6,33 @@ import { PROFILE_FORM } from './ProfileFormAttribute';
 import Button from '../../../../components/common/Button';
 import useProfileUpsertForm from '../hooks/useProfileUpsertForm';
 import { INITIAL_PROFILE } from '../../values/initial-profile-value';
+import { useEffect, useState } from 'react';
+import { ProfileType } from '../../types/profile';
+import axiosInstance from '../../../../lib/instance';
+import decodeJWT from '../../../../utils/decode-jwt';
 
 interface Props {
   mode: UpsertMode;
 }
 export default function ProfileUpsertForm({ mode }: Props) {
+  const [profile, setProfile] = useState<ProfileType>(INITIAL_PROFILE);
+  const { userId } = decodeJWT();
+
+  const fetchProfile = async () => {
+    if (!userId) return;
+    const { data } = await axiosInstance(`users/${userId}`);
+    setProfile(data.item);
+  };
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
   const buttonText = mode === 'register' ? UPSERT_BUTTON.REGISTER : UPSERT_BUTTON.EDIT;
 
-  const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(
-    INITIAL_PROFILE,
-    mode
-  );
+  const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(profile, mode);
   return (
-    <form className="flex w-full flex-col items-center gap-5">
+    <form className="flex w-full flex-col items-center gap-5" action={submitUpsertForm}>
       <div className="flex w-full flex-col items-center gap-5 md:grid md:grid-cols-2">
         <InputField
           {...PROFILE_FORM.input.name}
@@ -29,16 +43,16 @@ export default function ProfileUpsertForm({ mode }: Props) {
           }}
         />
         <InputField
-          {...PROFILE_FORM.input.phoneNumber}
+          {...PROFILE_FORM.input.phone}
           inputType="input"
-          value={formData.address2}
+          value={formData.phone}
           onChange={(e) => {
-            changeUpsertForm({ ...PROFILE_FORM.input.phoneNumber }.name, e.target.value);
+            changeUpsertForm({ ...PROFILE_FORM.input.phone }.name, e.target.value);
           }}
         />
         <SelectDropdown
           options={PROFILE_FORM.dropdown.address1.options}
-          currentOption={formData.address1}
+          currentOption={formData.address}
           onSelect={(option: string) => {
             changeUpsertForm(PROFILE_FORM.dropdown.address1.name, option);
           }}
