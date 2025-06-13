@@ -1,7 +1,8 @@
 export const PATHS = {
   LOGIN: '/login',
-  profileRegister: '/mypage/profile/register',
-  profileEdit: '/mypage/profile/edit',
+  PROFILE_REGISTER: '/myprofile/register',
+  PROFILE_EDIT: '/myprofile/edit',
+
   SIGNUP: '/signup',
   MYSTORE: '/mystore',
   MYPROFILE: '/myprofile',

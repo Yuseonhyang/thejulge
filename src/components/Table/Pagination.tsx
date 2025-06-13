@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import PaginationArrow from '../../assets/icons/PaginationArrow';
-import usePagination from '../../pages/myPage/_myPage/hooks/usePagination';
+import usePagination from '../../pages/myProfilePage/hooks/usePagination';
 
 interface Props {
   hasNext: boolean;

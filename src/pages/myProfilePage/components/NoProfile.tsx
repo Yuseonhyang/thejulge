@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { MYPAGE_BUTTON } from '../../../../constants/button';
-import Button from '../../../../components/common/Button';
-import { PATHS } from '../../../../constants/path';
+import Button from '../../../components/common/Button';
+import { PATHS } from '../../../constants/path';
+import { MYPAGE_BUTTON } from '../../../constants/button';
 
 export default function NoProfile() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function NoProfile() {
         <Button
           variant="primary"
           size="parent-dependent"
-          onClick={() => navigate(PATHS.profileRegister)}
+          onClick={() => navigate(PATHS.PROFILE_REGISTER)}
         >
           {MYPAGE_BUTTON.noProfile}
         </Button>

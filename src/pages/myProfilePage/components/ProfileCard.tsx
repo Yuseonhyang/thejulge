@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../../../components/common/Button';
-import { PATHS } from '../../../../constants/path';
+import { PATHS } from '../../../constants/path';
+import Button from '../../../components/common/Button';
 
-export default function MyProfile({}) {
+export default function ProfileCard({}) {
   const navigate = useNavigate();
   const name = '유선향';
   const phone = '01009425-2171';
@@ -30,7 +30,7 @@ export default function MyProfile({}) {
         <Button
           variant="secondary-red"
           size="parent-dependent"
-          onClick={() => navigate(PATHS.profileEdit)}
+          onClick={() => navigate(PATHS.PROFILE_EDIT)}
         >
           편집하기
         </Button>

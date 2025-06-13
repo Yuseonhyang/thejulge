@@ -23,4 +23,12 @@ export const FILTER_BUTTON = {
 export const MYPAGE_BUTTON = {
   noProfile: '내 프로필 등록하기',
   noApply: '공고 보러가기',
+
+  PROFILE_EDIT: '완료하기',
+  PROFILE_REGISTER: '등록하기',
+};
+
+export const UPSERT_BUTTON = {
+  REGISTER: '등록하기',
+  EDIT: '수정하기',
 };
