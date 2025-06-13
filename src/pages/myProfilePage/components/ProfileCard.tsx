@@ -30,7 +30,7 @@ export default function ProfileCard({}) {
         <Button
           variant="secondary-red"
           size="parent-dependent"
-          onClick={() => navigate(PATHS.profileEdit)}
+          onClick={() => navigate(PATHS.PROFILE_EDIT)}
         >
           편집하기
         </Button>

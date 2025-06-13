@@ -13,7 +13,7 @@ export default function NoProfile() {
         <Button
           variant="primary"
           size="parent-dependent"
-          onClick={() => navigate(PATHS.profileRegister)}
+          onClick={() => navigate(PATHS.PROFILE_REGISTER)}
         >
           {MYPAGE_BUTTON.noProfile}
         </Button>

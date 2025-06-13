@@ -12,6 +12,7 @@ import NoticeListPage from './pages/noticeListPage';
 import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
 import NoticeSearchPage from './pages/noticeSearchPage';
 import MyProfilePage from './pages/myProfilePage';
+import ProfileUpsertPage from './pages/myProfilePage/profileUpsertPage';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,9 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="myprofile" element={<MyProfilePage />} />
+            <Route path="myprofile/register" element={<ProfileUpsertPage />} />
+            <Route path="myprofile/edit" element={<ProfileUpsertPage />} />
+
             <Route path="mystore" element={<MyStorePage />} />
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
