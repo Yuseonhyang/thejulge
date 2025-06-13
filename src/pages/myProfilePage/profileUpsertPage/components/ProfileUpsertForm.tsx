@@ -31,6 +31,7 @@ export default function ProfileUpsertForm({ mode }: Props) {
   const buttonText = mode === 'register' ? UPSERT_BUTTON.REGISTER : UPSERT_BUTTON.EDIT;
 
   const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(profile, mode);
+
   return (
     <form className="flex w-full flex-col items-center gap-5" action={submitUpsertForm}>
       <div className="flex w-full flex-col items-center gap-5 md:grid md:grid-cols-2">
@@ -59,7 +60,6 @@ export default function ProfileUpsertForm({ mode }: Props) {
           label={PROFILE_FORM.dropdown.address.label}
         />
       </div>
-
       <InputField
         {...PROFILE_FORM.input.introduction}
         inputType="input"

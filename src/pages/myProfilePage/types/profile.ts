@@ -4,5 +4,4 @@ export interface ProfileType {
   phone: string;
   address: string;
   description: string;
-  imageUrl: string;
 }
