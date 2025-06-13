@@ -51,12 +51,12 @@ export default function ProfileUpsertForm({ mode }: Props) {
           }}
         />
         <SelectDropdown
-          options={PROFILE_FORM.dropdown.address1.options}
+          options={PROFILE_FORM.dropdown.address.options}
           currentOption={formData.address}
           onSelect={(option: string) => {
-            changeUpsertForm(PROFILE_FORM.dropdown.address1.name, option);
+            changeUpsertForm(PROFILE_FORM.dropdown.address.name, option);
           }}
-          label={PROFILE_FORM.dropdown.address1.label}
+          label={PROFILE_FORM.dropdown.address.label}
         />
       </div>
 

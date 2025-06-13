@@ -7,6 +7,6 @@ export const PROFILE_FORM = {
     introduction: { label: '소개', name: 'introduction', required: false, gapsize: '8' },
   },
   dropdown: {
-    address1: { label: '선호 지역', name: 'address1', options: SEOUL_DISTRICTS },
+    address: { label: '선호 지역', name: 'address1', options: SEOUL_DISTRICTS },
   },
 };
