@@ -30,7 +30,7 @@ export default function ProfileUpsertForm({ mode }: Props) {
 
   const buttonText = mode === 'register' ? UPSERT_BUTTON.REGISTER : UPSERT_BUTTON.EDIT;
 
-  const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(profile, mode);
+  const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(profile);
 
   return (
     <form className="flex w-full flex-col items-center gap-5" action={submitUpsertForm}>
@@ -61,11 +61,11 @@ export default function ProfileUpsertForm({ mode }: Props) {
         />
       </div>
       <InputField
-        {...PROFILE_FORM.input.introduction}
+        {...PROFILE_FORM.input.bio}
         inputType="input"
-        value={formData.description}
+        value={formData.bio}
         onChange={(e) => {
-          changeUpsertForm({ ...PROFILE_FORM.input.introduction }.name, e.target.value);
+          changeUpsertForm({ ...PROFILE_FORM.input.bio }.name, e.target.value);
         }}
         className="min-h-[153px]"
       />
