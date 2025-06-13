@@ -4,8 +4,7 @@ export const INITIAL_PROFILE: ProfileType = {
   id: 'string',
   name: 'string',
   phone: 'string',
-  address1: 'string',
-  address2: 'string',
+  address: 'string',
   description: 'string',
   imageUrl: 'string',
 };
