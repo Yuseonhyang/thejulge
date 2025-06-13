@@ -4,6 +4,8 @@ import InputField from '../../../../components/common/InputField';
 import SelectDropdown from '../../../../components/common/Dropdown/SelectDropdown';
 import { PROFILE_FORM } from './ProfileFormAttribute';
 import Button from '../../../../components/common/Button';
+import useProfileUpsertForm from '../hooks/useProfileUpsertForm';
+import { INITIAL_PROFILE } from '../../values/initial-profile-value';
 
 interface Props {
   mode: UpsertMode;
@@ -11,6 +13,10 @@ interface Props {
 export default function ProfileUpsertForm({ mode }: Props) {
   const buttonText = mode === 'register' ? UPSERT_BUTTON.REGISTER : UPSERT_BUTTON.EDIT;
 
+  const { changeUpsertForm, submitUpsertForm, formData } = useProfileUpsertForm(
+    INITIAL_PROFILE,
+    mode
+  );
   return (
     <form className="flex w-full flex-col items-center gap-5">
       <div className="flex w-full flex-col items-center gap-5 md:grid md:grid-cols-2">
