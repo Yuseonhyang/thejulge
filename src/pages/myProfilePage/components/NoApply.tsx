@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { MYPAGE_BUTTON } from '../../../../constants/button';
-import Button from '../../../../components/common/Button';
+import Button from '../../../components/common/Button';
+import { MYPAGE_BUTTON } from '../../../constants/button';
 
 //todo : 공고 보러가기 path 정하고 상수화
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { MYPAGE_BUTTON } from '../../../../constants/button';
-import Button from '../../../../components/common/Button';
-import { PATHS } from '../../../../constants/path';
+import Button from '../../../components/common/Button';
+import { PATHS } from '../../../constants/path';
+import { MYPAGE_BUTTON } from '../../../constants/button';
 
 export default function NoProfile() {
   const navigate = useNavigate();

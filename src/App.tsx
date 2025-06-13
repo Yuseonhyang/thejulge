@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
-import MyPage from './pages/myPage';
 import { AuthLayout } from './components/common/Layout/AuthLayout';
 import { Layout } from './components/common/Layout';
 import MyStorePage from './pages/myStore';
@@ -12,6 +11,7 @@ import NoticePage from './pages/noticeIdPage';
 import NoticeListPage from './pages/noticeListPage';
 import NoticeUpsertPage from './pages/myStore/noticeUpsertPage';
 import NoticeSearchPage from './pages/noticeSearchPage';
+import MyProfilePage from './pages/myProfilePage';
 
 const queryClient = new QueryClient();
 
@@ -27,7 +27,7 @@ function App() {
 
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="myprofile" element={<MyPage />} />
+            <Route path="myprofile" element={<MyProfilePage />} />
             <Route path="mystore" element={<MyStorePage />} />
             <Route path="mystore/register" element={<StoreUpsertPage />} />
             <Route path="mystore/edit" element={<StoreUpsertPage />} />
