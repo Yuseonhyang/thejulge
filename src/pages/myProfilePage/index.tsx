@@ -5,9 +5,13 @@ import decodeJWT from '../../utils/decode-jwt';
 import ProfileCard from './components/ProfileCard';
 import { ProfileType } from './types/profile';
 import NoProfile from './components/NoProfile';
+import { ApplicationsData } from '../noticeIdPage/types/applications';
+import NoApply from './components/NoApply';
 
 export default function MyProfilePage() {
   const [profile, setProfile] = useState<ProfileType>();
+  const [applications, setApplications] = useState<ApplicationsData>();
+
   const { userId } = decodeJWT();
 
   const fetchProfile = async () => {
@@ -16,8 +20,15 @@ export default function MyProfilePage() {
     setProfile(data.item);
   };
 
+  const fetchApplications = async () => {
+    if (!userId) return;
+    const { data } = await axiosInstance(`/users/${userId}/applications`);
+    setApplications(data);
+  };
+
   useEffect(() => {
     fetchProfile();
+    fetchApplications();
   }, []);
 
   return (
@@ -28,7 +39,7 @@ export default function MyProfilePage() {
       </section>
       <section className="flex flex-col gap-4 md:gap-8">
         <h1 className="text-3xl-bold">신청내역</h1>
-        <Table data={undefined} />
+        {applications && applications?.count > 0 ? <Table data={applications} /> : <NoApply />}
       </section>
     </div>
   );
