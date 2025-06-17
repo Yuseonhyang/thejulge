@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { PATHS } from '../../../constants/path';
 import Button from '../../../components/common/Button';
+import { ProfileType } from '../types/profile';
 
-export default function ProfileCard({}) {
+interface Props {
+  profile: ProfileType;
+}
+
+export default function ProfileCard({ profile }: Props) {
   const navigate = useNavigate();
-  const name = '유선향';
-  const phone = '01009425-2171';
-  const address = '서울시 관악구';
-  const description = '열심히 하겠습니다.';
+  const { name, phone, address, bio } = profile;
 
   return (
     <div className="bg-red10 flex h-fit min-h-49 w-full rounded-xl border-1 border-none p-5 md:min-h-64 md:p-8">
@@ -24,7 +26,7 @@ export default function ProfileCard({}) {
             <p className="text-gray50 text-md-rg md:text-lg-rg">선호 지역: {address}</p>
           </div>
         </div>
-        <p className="text-md-rg md:text-lg-rg">{description}</p>
+        <p className="text-md-rg md:text-lg-rg">{bio}</p>
       </div>
       <div className="h-9.5 w-27 md:h-12 md:w-42">
         <Button
